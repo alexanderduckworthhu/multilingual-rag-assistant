@@ -1,0 +1,12 @@
+streamlit==1.59.2
+# Streamlit 1.59 needs starlette>=1.3.1; older chromadb pinned an incompatible pair.
+starlette>=1.3.1
+chromadb==1.5.9
+sentence-transformers==4.1.0
+langchain-text-splitters==0.3.8
+pypdf==5.4.0
+openai==1.82.0
+python-dotenv==1.1.0
+requests==2.32.3
+deep-translator==1.11.4
+pytest==8.3.5

@@ -1,0 +1,50 @@
+[
+  {
+    "query_id": "q1",
+    "query": "What is mental health according to WHO?",
+    "relevant_ids": ["who_mental_health_en"],
+    "language_filter": null
+  },
+  {
+    "query_id": "q2",
+    "query": "Qu'est-ce que la santé mentale selon l'OMS ?",
+    "relevant_ids": ["who_mental_health_fr", "who_mental_health_en"],
+    "language_filter": null
+  },
+  {
+    "query_id": "q3",
+    "query": "What are the three dimensions of universal health coverage?",
+    "relevant_ids": ["who_uhc_en"],
+    "language_filter": "en"
+  },
+  {
+    "query_id": "q4",
+    "query": "Pourquoi les soins de santé primaires sont-ils importants pour la CSU ?",
+    "relevant_ids": ["who_uhc_fr", "who_phc_fr", "who_uhc_en", "who_phc_en"],
+    "language_filter": null
+  },
+  {
+    "query_id": "q5",
+    "query": "How should countries strengthen primary health care?",
+    "relevant_ids": ["who_phc_en"],
+    "language_filter": "en"
+  },
+  {
+    "query_id": "q6",
+    "query": "What barriers limit access to mental health care?",
+    "relevant_ids": ["who_mental_health_en"],
+    "language_filter": null
+  },
+  {
+    "query_id": "q7",
+    "query": "Que signifie ne laisser personne de côté pour la couverture sanitaire ?",
+    "relevant_ids": ["who_uhc_fr", "who_uhc_en"],
+    "language_filter": null
+  },
+  {
+    "query_id": "q8",
+    "query": "What is the role of PHC during pandemics?",
+    "relevant_ids": ["who_phc_en"],
+    "language_filter": null
+  }
+]

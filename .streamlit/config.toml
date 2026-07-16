@@ -1,0 +1,13 @@
+[theme]
+# Keep in sync with CSS tokens in src/styles.py (:root)
+primaryColor = "#005BBB"
+backgroundColor = "#F4F7FB"
+secondaryBackgroundColor = "#EEF3F9"
+textColor = "#0B1F33"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true

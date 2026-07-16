@@ -1,0 +1,29 @@
+Extrait d'orientation OMS — Santé mentale (échantillon éducatif pour portfolio RAG)
+
+La santé mentale est un état de bien-être mental qui permet aux personnes de faire
+face aux stresses de la vie, de réaliser leurs capacités, d'apprendre et de
+travailler correctement, et de contribuer à leur communauté. La santé mentale est
+une composante essentielle de la santé et du bien-être, ainsi qu'un droit humain
+fondamental. La santé mentale est plus que l'absence de troubles mentaux.
+
+Les déterminants de la santé mentale comprennent des facteurs psychologiques et
+biologiques individuels, ainsi que des facteurs sociaux, culturels, économiques,
+politiques et environnementaux tels que les politiques nationales, la protection
+sociale, les conditions de vie et de travail, et le soutien communautaire. Des
+risques peuvent survenir à tous les stades de la vie, mais ceux qui surviennent
+pendant les périodes sensibles du développement, en particulier la petite enfance,
+sont particulièrement dommageables.
+
+Les interventions de promotion et de prévention comprennent le soutien aux parents
+et au développement de la petite enfance, les programmes scolaires, la santé
+mentale au travail, et la protection communautaire pour les personnes en situation
+d'urgence humanitaire. L'OMS recommande d'intégrer la santé mentale dans les soins
+de santé primaires afin que les personnes puissent accéder aux services près de
+chez elles, sans barrières liées à la stigmatisation.
+
+En situation d'urgence, l'OMS met l'accent sur les premiers secours psychologiques,
+la continuité des médicaments psychotropes essentiels, et la protection des
+personnes présentant des troubles mentaux graves contre la négligence et les
+abus. La stigmatisation et la discrimination restent des obstacles majeurs aux
+soins dans le monde. Renforcer les effectifs et le financement de la santé mentale
+sont des actions prioritaires pour les systèmes de santé.

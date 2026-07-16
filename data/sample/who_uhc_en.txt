@@ -1,0 +1,23 @@
+WHO guidance excerpt — Universal health coverage (educational sample for RAG portfolio)
+
+Universal health coverage (UHC) means that all people have access to the full range
+of quality health services they need, when and where they need them, without
+financial hardship. It covers the full continuum of essential health services, from
+health promotion to prevention, treatment, rehabilitation, and palliative care.
+
+UHC is measured along three dimensions often visualized as a cube: the population
+covered, the services covered, and the proportion of costs covered. Progress toward
+UHC requires expanding each dimension while protecting people from catastrophic
+health expenditure. Out-of-pocket payments are a major cause of impoverishment
+linked to health care in many countries.
+
+Primary health care (PHC) is the cornerstone of UHC. WHO recommends reorienting
+health systems toward PHC to improve equity, efficiency, and resilience. Essential
+public health functions — surveillance, preparedness, health promotion, and
+regulation — must be financed and governed alongside clinical services.
+
+To advance UHC, countries should strengthen domestic public financing, reduce
+reliance on out-of-pocket spending, invest in health and care workers, improve
+data systems for monitoring service coverage and financial protection, and engage
+communities in priority setting. Leaving no one behind requires attention to
+refugees, migrants, people with disabilities, and other groups facing barriers.

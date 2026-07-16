@@ -1,0 +1,723 @@
+"""User-facing strings for UI languages and grounded-answer messages."""
+
+from __future__ import annotations
+
+from typing import Any
+
+# Interface + answer languages (queries can be any of these against the EN/FR index).
+UI_LANG_CODES: tuple[str, ...] = ("en", "fr", "de", "it", "pt", "zh", "ru")
+
+# Indexed document languages only (sample corpus).
+CORPUS_LANG_CODES: tuple[str, ...] = ("en", "fr")
+
+LANGUAGE_LABELS: dict[str, str] = {
+    "en": "English",
+    "fr": "Français",
+    "de": "Deutsch",
+    "it": "Italiano",
+    "pt": "Português",
+    "zh": "中文",
+    "ru": "Русский",
+}
+
+LLM_LANGUAGE_NAMES: dict[str, str] = {
+    "en": "English",
+    "fr": "French",
+    "de": "German",
+    "it": "Italian",
+    "pt": "Portuguese",
+    "zh": "Simplified Chinese (Mandarin)",
+    "ru": "Russian",
+}
+
+UI: dict[str, dict[str, Any]] = {
+    "en": {
+        "page_title": "WHO Guidance QA",
+        "title": "WHO Guidance QA",
+        "subtitle": (
+            "Ask about public WHO guidance in your language. "
+            "The index holds English and French passages; answers include "
+            "citations — or a clear refusal when retrieval is too weak."
+        ),
+        "portfolio_note": "Portfolio demo · not an official WHO tool",
+        "question": "Your question",
+        "question_placeholder": "Example: What is universal health coverage?",
+        "ask": "Search the guidance",
+        "clear_question": "Clear question",
+        "try_these": "Start from an example",
+        "answer_lang": "Answer language",
+        "search_both": "Search English and French documents together",
+        "search_both_help": (
+            "The corpus is English and French. Multilingual embeddings still "
+            "match questions in other languages. Turn off to restrict retrieval "
+            "to one document language."
+        ),
+        "search_lang": "Retrieve from documents in",
+        "advanced": "Search options",
+        "answer": "Answer",
+        "sources": "Supporting passages",
+        "sources_hint": "Open a passage to verify wording against the source text.",
+        "no_sources": "No passages were retrieved for this question.",
+        "empty_question": "Enter a question before searching (at least a few words).",
+        "question_too_short": "Add a little more detail so retrieval has something to match.",
+        "loading": "Searching indexed WHO guidance…",
+        "first_visit": (
+            "Type a question above, or pick an example. "
+            "You will see a cited answer when retrieval is strong enough, "
+            "and a refusal when it is not."
+        ),
+        "retry": "Search again",
+        "status_grounded": "Grounded — supported by indexed passages",
+        "status_refused": "Refused — retrieval match too weak to answer safely",
+        "status_empty": "Index empty — build the index before searching",
+        "mode_llm": "Drafted from retrieved passages (LLM)",
+        "mode_extractive": "Showing top matching passages (no API key configured)",
+        "mode_refused": "Generation skipped — see explanation below",
+        "mode_empty_index": "No documents indexed yet",
+        "mode_llm_error": "Model unavailable — showing matching passages instead",
+        "sidebar_lang": "Interface language",
+        "sidebar_about": "About",
+        "sidebar_body": (
+            "Multilingual retrieval-augmented QA over public WHO topic guidance. "
+            "Ask in English, French, German, Italian, Portuguese, Mandarin, or "
+            "Russian against a shared EN/FR index, with citations and a distance gate."
+        ),
+        "sidebar_ready": "{n} passages indexed",
+        "sidebar_empty": (
+            "Index is empty. From the project root run:\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "relevance",
+        "lang_label": "Passage language",
+        "open_source": "Open original page",
+        "passage_id": "Passage ID",
+        "examples": [
+            "What is mental health according to WHO?",
+            "How should countries strengthen primary health care?",
+            "What is universal health coverage?",
+        ],
+        "msg_empty_index": (
+            "The local index is empty. "
+            "Run `python -m scripts.build_index`, then search again."
+        ),
+        "msg_refusal": (
+            "No passage matched this question closely enough to answer safely. "
+            "Ask about mental health, universal health coverage, or primary "
+            "health care — or search both English and French documents."
+        ),
+        "msg_extractive_header": (
+            "No LLM API key configured. Top matching passages:"
+        ),
+        "msg_extractive_same_lang": (
+            "Showing passages in your answer language when available."
+        ),
+        "msg_extractive_other_lang": (
+            "No indexed passage in your answer language matched closely enough. "
+            "Showing the best English/French source passages (original wording). "
+            "Set OPENAI_API_KEY for a drafted answer in your language."
+        ),
+        "msg_passages_translated": (
+            "Source passages were translated into your answer language. "
+            "Open “Show original” under each source to verify the indexed wording."
+        ),
+        "translated_from": "Translated from {source}",
+        "show_original": "Show original wording",
+
+    },
+    "fr": {
+        "page_title": "QA orientations OMS",
+        "title": "QA sur les orientations OMS",
+        "subtitle": (
+            "Posez une question sur des orientations OMS publiques dans votre langue. "
+            "L’index contient des passages en anglais et en français ; les réponses "
+            "sont citées — ou clairement refusées si la récupération est trop faible."
+        ),
+        "portfolio_note": "Démo portfolio · pas un outil officiel de l’OMS",
+        "question": "Votre question",
+        "question_placeholder": "Exemple : Qu’est-ce que la couverture sanitaire universelle ?",
+        "ask": "Chercher dans les orientations",
+        "clear_question": "Effacer la question",
+        "try_these": "Partir d’un exemple",
+        "answer_lang": "Langue de la réponse",
+        "search_both": "Chercher dans les documents anglais et français",
+        "search_both_help": (
+            "Le corpus est en anglais et en français. Les embeddings multilingues "
+            "peuvent aussi matcher d’autres langues. Désactivez pour limiter "
+            "à une seule langue de document."
+        ),
+        "search_lang": "Récupérer depuis les documents en",
+        "advanced": "Options de recherche",
+        "answer": "Réponse",
+        "sources": "Passages sources",
+        "sources_hint": "Ouvrez un passage pour vérifier le libellé dans le texte source.",
+        "no_sources": "Aucun passage n’a été récupéré pour cette question.",
+        "empty_question": "Saisissez une question avant de chercher.",
+        "question_too_short": "Ajoutez un peu plus de détail pour améliorer la recherche.",
+        "loading": "Recherche dans les orientations OMS indexées…",
+        "first_visit": (
+            "Saisissez une question ci-dessus, ou choisissez un exemple. "
+            "Vous verrez une réponse citée si la récupération est assez solide, "
+            "et un refus dans le cas contraire."
+        ),
+        "retry": "Relancer la recherche",
+        "status_grounded": "Fondé — appuyé par des passages indexés",
+        "status_refused": "Refusé — correspondance trop faible pour répondre",
+        "status_empty": "Index vide — construisez l’index avant de chercher",
+        "mode_llm": "Rédigé à partir des passages (LLM)",
+        "mode_extractive": "Meilleurs passages (aucune clé API configurée)",
+        "mode_refused": "Génération ignorée — voir l’explication ci-dessous",
+        "mode_empty_index": "Aucun document indexé",
+        "mode_llm_error": "Modèle indisponible — passages affichés à la place",
+        "sidebar_lang": "Langue de l’interface",
+        "sidebar_about": "À propos",
+        "sidebar_body": (
+            "QA augmentée par récupération sur des orientations OMS publiques. "
+            "Posez votre question en anglais, français, allemand, italien, "
+            "portugais, chinois ou russe contre un index EN/FR partagé."
+        ),
+        "sidebar_ready": "{n} passages indexés",
+        "sidebar_empty": (
+            "L’index est vide. Depuis la racine du projet :\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "pertinence",
+        "lang_label": "Langue du passage",
+        "open_source": "Ouvrir la page d’origine",
+        "passage_id": "ID du passage",
+        "examples": [
+            "Qu'est-ce que la santé mentale selon l'OMS ?",
+            "Comment renforcer les soins de santé primaires ?",
+            "Qu'est-ce que la couverture sanitaire universelle ?",
+        ],
+        "msg_empty_index": (
+            "L’index local est vide. "
+            "Lancez `python -m scripts.build_index`, puis relancez la recherche."
+        ),
+        "msg_refusal": (
+            "Aucun passage ne correspond assez pour répondre de façon fiable. "
+            "Posez une question sur la santé mentale, la couverture sanitaire "
+            "universelle ou les soins de santé primaires."
+        ),
+        "msg_extractive_header": (
+            "Aucune clé API LLM configurée. Passages les plus proches :"
+        ),
+        "msg_extractive_same_lang": (
+            "Passages affichés dans la langue de votre réponse lorsqu’ils sont disponibles."
+        ),
+        "msg_extractive_other_lang": (
+            "Aucun passage indexé dans la langue de votre réponse n’a assez bien correspondu. "
+            "Voici les meilleurs passages sources en anglais/français (libellé d’origine). "
+            "Définissez OPENAI_API_KEY pour une réponse rédigée dans votre langue."
+        ),
+        "msg_passages_translated": (
+            "Les passages sources ont été traduits dans la langue de votre réponse. "
+            "Ouvrez « Afficher l’original » sous chaque source pour vérifier le libellé indexé."
+        ),
+        "translated_from": "Traduit depuis {source}",
+        "show_original": "Afficher le libellé d’origine",
+
+    },
+    "de": {
+        "page_title": "WHO-Leitlinien QA",
+        "title": "WHO-Leitlinien QA",
+        "subtitle": (
+            "Stellen Sie Fragen zu öffentlichen WHO-Leitlinien in Ihrer Sprache. "
+            "Der Index enthält englische und französische Passagen; Antworten "
+            "sind zitiert — oder klar abgelehnt, wenn die Suche zu schwach ist."
+        ),
+        "portfolio_note": "Portfolio-Demo · kein offizielles WHO-Tool",
+        "question": "Ihre Frage",
+        "question_placeholder": "Beispiel: Was ist universelle Gesundheitsversorgung?",
+        "ask": "Leitlinien durchsuchen",
+        "clear_question": "Frage löschen",
+        "try_these": "Mit einem Beispiel starten",
+        "answer_lang": "Antwortsprache",
+        "search_both": "Englische und französische Dokumente gemeinsam durchsuchen",
+        "search_both_help": (
+            "Der Korpus ist Englisch und Französisch. Mehrsprachige Embeddings "
+            "können auch andere Fragesprachen zuordnen. Deaktivieren, um auf "
+            "eine Dokumentsprache zu beschränken."
+        ),
+        "search_lang": "Abrufen aus Dokumenten in",
+        "advanced": "Suchoptionen",
+        "answer": "Antwort",
+        "sources": "Belegpassagen",
+        "sources_hint": "Öffnen Sie eine Passage, um den Wortlaut zu prüfen.",
+        "no_sources": "Für diese Frage wurden keine Passagen gefunden.",
+        "empty_question": "Geben Sie zuerst eine Frage ein.",
+        "question_too_short": "Etwas mehr Detail verbessert die Suche.",
+        "loading": "Durchsuche indexierte WHO-Leitlinien…",
+        "first_visit": (
+            "Geben Sie oben eine Frage ein oder wählen Sie ein Beispiel. "
+            "Sie erhalten eine zitierte Antwort bei starker Suche — "
+            "sonst eine klare Ablehnung."
+        ),
+        "retry": "Erneut suchen",
+        "status_grounded": "Belegt — gestützt durch indexierte Passagen",
+        "status_refused": "Abgelehnt — Treffer zu schwach für eine sichere Antwort",
+        "status_empty": "Index leer — zuerst Index aufbauen",
+        "mode_llm": "Aus abgerufenen Passagen formuliert (LLM)",
+        "mode_extractive": "Beste Passagen (kein API-Schlüssel)",
+        "mode_refused": "Keine Generierung — siehe Erklärung unten",
+        "mode_empty_index": "Noch keine Dokumente indexiert",
+        "mode_llm_error": "Modell nicht verfügbar — Passagen statt Antwort",
+        "sidebar_lang": "Oberflächensprache",
+        "sidebar_about": "Über diese Demo",
+        "sidebar_body": (
+            "Mehrsprachige RAG-QA über öffentliche WHO-Themenleitlinien. "
+            "Fragen auf Deutsch, Englisch, Französisch und weiteren Sprachen "
+            "gegen einen gemeinsamen EN/FR-Index, mit Zitaten und Ablehnungsschwelle."
+        ),
+        "sidebar_ready": "{n} Passagen indexiert",
+        "sidebar_empty": (
+            "Index ist leer. Im Projektordner ausführen:\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "Relevanz",
+        "lang_label": "Passagensprache",
+        "open_source": "Originalseite öffnen",
+        "passage_id": "Passagen-ID",
+        "examples": [
+            "Was versteht die WHO unter psychischer Gesundheit?",
+            "Wie sollten Länder die Primärversorgung stärken?",
+            "Was ist universelle Gesundheitsversorgung?",
+        ],
+        "msg_empty_index": (
+            "Der lokale Index ist leer. "
+            "Führen Sie `python -m scripts.build_index` aus und suchen Sie erneut."
+        ),
+        "msg_refusal": (
+            "Kein Passagen-Treffer war stark genug für eine sichere Antwort. "
+            "Fragen Sie zu psychischer Gesundheit, universeller "
+            "Gesundheitsversorgung oder Primärversorgung."
+        ),
+        "msg_extractive_header": (
+            "Kein LLM-API-Schlüssel konfiguriert. Beste Passagen:"
+        ),
+        "msg_extractive_same_lang": (
+            "Passagen in Ihrer Antwortsprache werden bevorzugt angezeigt."
+        ),
+        "msg_extractive_other_lang": (
+            "Kein indexierter Treffer in Ihrer Antwortsprache war stark genug. "
+            "Es folgen die besten englischen/französischen Quellpassagen (Originalwortlaut). "
+            "Setzen Sie OPENAI_API_KEY für eine formulierte Antwort in Ihrer Sprache."
+        ),
+        "msg_passages_translated": (
+            "Quellpassagen wurden in Ihre Antwortsprache übersetzt. "
+            "Öffnen Sie „Original anzeigen“, um den indexierten Wortlaut zu prüfen."
+        ),
+        "translated_from": "Übersetzt aus dem {source}",
+        "show_original": "Originalwortlaut anzeigen",
+
+    },
+    "it": {
+        "page_title": "QA orientamenti OMS",
+        "title": "QA sugli orientamenti OMS",
+        "subtitle": (
+            "Fate domande sugli orientamenti OMS pubblici nella vostra lingua. "
+            "L’indice contiene passaggi in inglese e francese; le risposte "
+            "sono citate — o rifiutate se il recupero è troppo debole."
+        ),
+        "portfolio_note": "Demo portfolio · non uno strumento ufficiale OMS",
+        "question": "La vostra domanda",
+        "question_placeholder": "Esempio: Cos’è la copertura sanitaria universale?",
+        "ask": "Cerca negli orientamenti",
+        "clear_question": "Cancella domanda",
+        "try_these": "Parti da un esempio",
+        "answer_lang": "Lingua della risposta",
+        "search_both": "Cerca nei documenti inglesi e francesi insieme",
+        "search_both_help": (
+            "Il corpus è in inglese e francese. Gli embedding multilingue "
+            "possono comunque abbinare altre lingue. Disattiva per limitare "
+            "a una sola lingua dei documenti."
+        ),
+        "search_lang": "Recupera dai documenti in",
+        "advanced": "Opzioni di ricerca",
+        "answer": "Risposta",
+        "sources": "Passaggi a supporto",
+        "sources_hint": "Aprite un passaggio per verificare il testo sorgente.",
+        "no_sources": "Nessun passaggio recuperato per questa domanda.",
+        "empty_question": "Inserite una domanda prima di cercare.",
+        "question_too_short": "Aggiungete un po’ più di dettaglio per la ricerca.",
+        "loading": "Ricerca negli orientamenti OMS indicizzati…",
+        "first_visit": (
+            "Scrivete una domanda sopra, oppure scegliete un esempio. "
+            "Vedrete una risposta citata se il recupero è solido, "
+            "altrimenti un rifiuto chiaro."
+        ),
+        "retry": "Cerca di nuovo",
+        "status_grounded": "Fondato — supportato da passaggi indicizzati",
+        "status_refused": "Rifiutato — corrispondenza troppo debole",
+        "status_empty": "Indice vuoto — costruite prima l’indice",
+        "mode_llm": "Redatto dai passaggi recuperati (LLM)",
+        "mode_extractive": "Passaggi migliori (nessuna chiave API)",
+        "mode_refused": "Generazione saltata — vedi spiegazione sotto",
+        "mode_empty_index": "Nessun documento indicizzato",
+        "mode_llm_error": "Modello non disponibile — mostro i passaggi",
+        "sidebar_lang": "Lingua dell’interfaccia",
+        "sidebar_about": "Informazioni",
+        "sidebar_body": (
+            "QA multilingue con retrieval su orientamenti OMS pubblici. "
+            "Domande in italiano e altre lingue contro un indice EN/FR "
+            "condiviso, con citazioni e soglia di rifiuto."
+        ),
+        "sidebar_ready": "{n} passaggi indicizzati",
+        "sidebar_empty": (
+            "L’indice è vuoto. Dalla root del progetto:\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "rilevanza",
+        "lang_label": "Lingua del passaggio",
+        "open_source": "Apri pagina originale",
+        "passage_id": "ID passaggio",
+        "examples": [
+            "Cos’è la salute mentale secondo l’OMS?",
+            "Come dovrebbero i paesi rafforzare l’assistenza sanitaria primaria?",
+            "Cos’è la copertura sanitaria universale?",
+        ],
+        "msg_empty_index": (
+            "L’indice locale è vuoto. "
+            "Eseguite `python -m scripts.build_index`, poi cercate di nuovo."
+        ),
+        "msg_refusal": (
+            "Nessun passaggio corrisponde abbastanza per rispondere in sicurezza. "
+            "Chiedete di salute mentale, copertura sanitaria universale "
+            "o assistenza sanitaria primaria."
+        ),
+        "msg_extractive_header": (
+            "Nessuna chiave API LLM configurata. Passaggi più vicini:"
+        ),
+        "msg_extractive_same_lang": (
+            "Vengono mostrati i passaggi nella lingua della risposta quando disponibili."
+        ),
+        "msg_extractive_other_lang": (
+            "Nessun passaggio indicizzato nella lingua della risposta corrisponde abbastanza. "
+            "Ecco i migliori passaggi sorgente in inglese/francese (testo originale). "
+            "Impostate OPENAI_API_KEY per una risposta redatta nella vostra lingua."
+        ),
+        "msg_passages_translated": (
+            "I passaggi sorgente sono stati tradotti nella lingua della risposta. "
+            "Aprite « Mostra originale » sotto ogni fonte per verificare il testo indicizzato."
+        ),
+        "translated_from": "Tradotto da {source}",
+        "show_original": "Mostra testo originale",
+
+    },
+    "pt": {
+        "page_title": "QA orientações OMS",
+        "title": "QA sobre orientações da OMS",
+        "subtitle": (
+            "Pergunte sobre orientações públicas da OMS no seu idioma. "
+            "O índice contém trechos em inglês e francês; as respostas "
+            "vêm com citações — ou uma recusa clara quando a recuperação é fraca."
+        ),
+        "portfolio_note": "Demo de portfólio · não é uma ferramenta oficial da OMS",
+        "question": "A sua pergunta",
+        "question_placeholder": "Exemplo: O que é cobertura universal de saúde?",
+        "ask": "Pesquisar nas orientações",
+        "clear_question": "Limpar pergunta",
+        "try_these": "Começar com um exemplo",
+        "answer_lang": "Idioma da resposta",
+        "search_both": "Pesquisar documentos em inglês e francês juntos",
+        "search_both_help": (
+            "O corpus está em inglês e francês. Embeddings multilíngues ainda "
+            "podem corresponder a outras línguas. Desative para restringir "
+            "a um idioma de documento."
+        ),
+        "search_lang": "Recuperar de documentos em",
+        "advanced": "Opções de pesquisa",
+        "answer": "Resposta",
+        "sources": "Trechos de apoio",
+        "sources_hint": "Abra um trecho para verificar o texto de origem.",
+        "no_sources": "Nenhum trecho foi recuperado para esta pergunta.",
+        "empty_question": "Introduza uma pergunta antes de pesquisar.",
+        "question_too_short": "Acrescente um pouco mais de detalhe para a pesquisa.",
+        "loading": "A pesquisar orientações da OMS indexadas…",
+        "first_visit": (
+            "Escreva uma pergunta acima ou escolha um exemplo. "
+            "Verá uma resposta citada se a recuperação for forte o suficiente, "
+            "e uma recusa quando não for."
+        ),
+        "retry": "Pesquisar novamente",
+        "status_grounded": "Fundamentado — apoiado por trechos indexados",
+        "status_refused": "Recusado — correspondência demasiado fraca",
+        "status_empty": "Índice vazio — construa o índice primeiro",
+        "mode_llm": "Redigido a partir dos trechos (LLM)",
+        "mode_extractive": "Melhores trechos (sem chave de API)",
+        "mode_refused": "Geração omitida — ver explicação abaixo",
+        "mode_empty_index": "Ainda sem documentos indexados",
+        "mode_llm_error": "Modelo indisponível — a mostrar trechos",
+        "sidebar_lang": "Idioma da interface",
+        "sidebar_about": "Sobre",
+        "sidebar_body": (
+            "QA multilíngue com recuperação sobre orientações públicas da OMS. "
+            "Pergunte em português e outros idiomas contra um índice EN/FR "
+            "partilhado, com citações e limiar de recusa."
+        ),
+        "sidebar_ready": "{n} trechos indexados",
+        "sidebar_empty": (
+            "O índice está vazio. Na raiz do projeto execute:\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "relevância",
+        "lang_label": "Idioma do trecho",
+        "open_source": "Abrir página original",
+        "passage_id": "ID do trecho",
+        "examples": [
+            "O que é saúde mental segundo a OMS?",
+            "Como devem os países reforçar os cuidados de saúde primários?",
+            "O que é cobertura universal de saúde?",
+        ],
+        "msg_empty_index": (
+            "O índice local está vazio. "
+            "Execute `python -m scripts.build_index` e pesquise novamente."
+        ),
+        "msg_refusal": (
+            "Nenhum trecho correspondeu o suficiente para responder com segurança. "
+            "Pergunte sobre saúde mental, cobertura universal de saúde "
+            "ou cuidados de saúde primários."
+        ),
+        "msg_extractive_header": (
+            "Nenhuma chave de API LLM configurada. Melhores trechos:"
+        ),
+        "msg_extractive_same_lang": (
+            "Quando disponíveis, os trechos são mostrados no idioma da resposta."
+        ),
+        "msg_extractive_other_lang": (
+            "Nenhum trecho indexado no idioma da resposta correspondeu o suficiente. "
+            "Seguem os melhores trechos em inglês/francês (redação original). "
+            "Defina OPENAI_API_KEY para uma resposta redigida no seu idioma."
+        ),
+        "msg_passages_translated": (
+            "Os trechos de origem foram traduzidos para o idioma da resposta. "
+            "Abra « Mostrar original » em cada fonte para verificar o texto indexado."
+        ),
+        "translated_from": "Traduzido de {source}",
+        "show_original": "Mostrar texto original",
+
+    },
+    "zh": {
+        "page_title": "世卫组织指南问答",
+        "title": "世卫组织指南问答",
+        "subtitle": (
+            "可用您的语言就公开的世卫组织主题指南提问。"
+            "索引收录英文与法文段落；回答附带出处引用——"
+            "若检索匹配过弱，则会明确拒绝作答。"
+        ),
+        "portfolio_note": "作品集演示 · 非世卫组织官方工具",
+        "question": "您的问题",
+        "question_placeholder": "例如：什么是全民健康覆盖？",
+        "ask": "检索指南",
+        "clear_question": "清空问题",
+        "try_these": "从示例开始",
+        "answer_lang": "回答语言",
+        "search_both": "同时检索英文与法文文档",
+        "search_both_help": (
+            "语料为英文与法文。多语言向量仍可匹配其他提问语言。"
+            "关闭后可限制为单一文档语言。"
+        ),
+        "search_lang": "仅从以下语言的文档检索",
+        "advanced": "检索选项",
+        "answer": "回答",
+        "sources": "支持段落",
+        "sources_hint": "打开段落以对照原文措辞。",
+        "no_sources": "未检索到与此问题相关的段落。",
+        "empty_question": "请先输入问题再检索。",
+        "question_too_short": "请补充更多细节以提高检索效果。",
+        "loading": "正在检索已索引的世卫组织指南…",
+        "first_visit": (
+            "在上方输入问题，或选择一个示例。"
+            "检索足够强时会给出带引用的回答；否则会明确拒绝。"
+        ),
+        "retry": "重新检索",
+        "status_grounded": "有依据 — 由索引段落支持",
+        "status_refused": "已拒绝 — 匹配过弱，无法安全作答",
+        "status_empty": "索引为空 — 请先构建索引",
+        "mode_llm": "根据检索段落起草（大模型）",
+        "mode_extractive": "显示最相关段落（未配置 API 密钥）",
+        "mode_refused": "已跳过生成 — 见下方说明",
+        "mode_empty_index": "尚未索引任何文档",
+        "mode_llm_error": "模型不可用 — 改为显示段落",
+        "sidebar_lang": "界面语言",
+        "sidebar_about": "关于",
+        "sidebar_body": (
+            "面向公开世卫组织主题指南的多语言检索增强问答。"
+            "可用中文等语言提问，检索共享的英/法索引，"
+            "并带有引用与弱匹配拒答机制。"
+        ),
+        "sidebar_ready": "已索引 {n} 个段落",
+        "sidebar_empty": (
+            "索引为空。请在项目根目录运行：\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "相关度",
+        "lang_label": "段落语言",
+        "open_source": "打开原始页面",
+        "passage_id": "段落 ID",
+        "examples": [
+            "根据世卫组织，什么是心理健康？",
+            "各国应如何加强初级卫生保健？",
+            "什么是全民健康覆盖？",
+        ],
+        "msg_empty_index": (
+            "本地索引为空。"
+            "请运行 `python -m scripts.build_index` 后再检索。"
+        ),
+        "msg_refusal": (
+            "没有足够接近的段落可安全作答。"
+            "请围绕心理健康、全民健康覆盖或初级卫生保健提问。"
+        ),
+        "msg_extractive_header": "未配置大模型 API 密钥。最相关段落：",
+        "msg_extractive_same_lang": "在可用时优先显示与回答语言相同的段落。",
+        "msg_extractive_other_lang": (
+            "索引中没有足够接近的回答语言段落。"
+            "以下为最相关的英/法原文段落。"
+            "设置 OPENAI_API_KEY 可获得用您的语言起草的回答。"
+        ),
+        "msg_passages_translated": (
+            "源段落已翻译为您的回答语言。"
+            "可在各来源下打开「显示原文」以核对索引中的措辞。"
+        ),
+        "translated_from": "译自{source}",
+        "show_original": "显示原文",
+
+    },
+    "ru": {
+        "page_title": "QA по руководствам ВОЗ",
+        "title": "QA по руководствам ВОЗ",
+        "subtitle": (
+            "Задавайте вопросы по открытым тематическим руководствам ВОЗ "
+            "на своём языке. В индексе — английские и французские фрагменты; "
+            "ответы с цитатами — или явный отказ при слабом поиске."
+        ),
+        "portfolio_note": "Портфолио-демо · не официальный инструмент ВОЗ",
+        "question": "Ваш вопрос",
+        "question_placeholder": "Пример: Что такое всеобщий охват услугами здравоохранения?",
+        "ask": "Искать в руководствах",
+        "clear_question": "Очистить вопрос",
+        "try_these": "Начать с примера",
+        "answer_lang": "Язык ответа",
+        "search_both": "Искать в английских и французских документах вместе",
+        "search_both_help": (
+            "Корпус — на английском и французском. Многоязычные эмбеддинги "
+            "могут сопоставлять и другие языки вопросов. Отключите, чтобы "
+            "ограничить язык документов."
+        ),
+        "search_lang": "Извлекать из документов на",
+        "advanced": "Параметры поиска",
+        "answer": "Ответ",
+        "sources": "Подтверждающие фрагменты",
+        "sources_hint": "Откройте фрагмент, чтобы сверить формулировку с источником.",
+        "no_sources": "По этому вопросу фрагменты не найдены.",
+        "empty_question": "Введите вопрос перед поиском.",
+        "question_too_short": "Добавьте чуть больше деталей для лучшего поиска.",
+        "loading": "Идёт поиск по индексированным руководствам ВОЗ…",
+        "first_visit": (
+            "Введите вопрос выше или выберите пример. "
+            "При сильном поиске вы увидите ответ с цитатами, "
+            "иначе — явный отказ."
+        ),
+        "retry": "Искать снова",
+        "status_grounded": "Обосновано — опирается на индексированные фрагменты",
+        "status_refused": "Отказ — совпадение слишком слабое",
+        "status_empty": "Индекс пуст — сначала постройте индекс",
+        "mode_llm": "Составлено по найденным фрагментам (LLM)",
+        "mode_extractive": "Лучшие фрагменты (нет API-ключа)",
+        "mode_refused": "Генерация пропущена — см. пояснение ниже",
+        "mode_empty_index": "Документы ещё не проиндексированы",
+        "mode_llm_error": "Модель недоступна — показаны фрагменты",
+        "sidebar_lang": "Язык интерфейса",
+        "sidebar_about": "О проекте",
+        "sidebar_body": (
+            "Многоязычный RAG-QA по открытым тематическим руководствам ВОЗ. "
+            "Вопросы на русском и других языках к общему индексу EN/FR, "
+            "с цитатами и порогом отказа при слабом совпадении."
+        ),
+        "sidebar_ready": "Проиндексировано фрагментов: {n}",
+        "sidebar_empty": (
+            "Индекс пуст. В корне проекта выполните:\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "релевантность",
+        "lang_label": "Язык фрагмента",
+        "open_source": "Открыть исходную страницу",
+        "passage_id": "ID фрагмента",
+        "examples": [
+            "Что ВОЗ понимает под психическим здоровьем?",
+            "Как странам укреплять первичную медико-санитарную помощь?",
+            "Что такое всеобщий охват услугами здравоохранения?",
+        ],
+        "msg_empty_index": (
+            "Локальный индекс пуст. "
+            "Выполните `python -m scripts.build_index` и повторите поиск."
+        ),
+        "msg_refusal": (
+            "Нет достаточно близкого фрагмента для безопасного ответа. "
+            "Спросите о психическом здоровье, всеобщем охвате услугами "
+            "здравоохранения или первичной помощи."
+        ),
+        "msg_extractive_header": (
+            "API-ключ LLM не настроен. Наиболее близкие фрагменты:"
+        ),
+        "msg_extractive_same_lang": (
+            "По возможности показаны фрагменты на языке ответа."
+        ),
+        "msg_extractive_other_lang": (
+            "В индексе нет достаточно близкого фрагмента на языке ответа. "
+            "Ниже лучшие английские/французские исходные фрагменты (оригинальный текст). "
+            "Задайте OPENAI_API_KEY для ответа, составленного на вашем языке."
+        ),
+        "msg_passages_translated": (
+            "Исходные фрагменты переведены на язык ответа. "
+            "Откройте « Показать оригинал », чтобы сверить индексированный текст."
+        ),
+        "translated_from": "Переведено с {source}",
+        "show_original": "Показать оригинал",
+
+    },
+}
+
+
+def language_label(code: str) -> str:
+    """Return the native display label for a language code."""
+    return LANGUAGE_LABELS.get(code, code)
+
+
+def llm_language_name(code: str) -> str:
+    """Return the English language name used in LLM system prompts."""
+    return LLM_LANGUAGE_NAMES.get(code, "English")
+
+
+def example_questions(lang: str) -> list[str]:
+    """Return example questions for the active interface language."""
+    examples = t(lang, "examples")
+    if isinstance(examples, list):
+        return [str(item) for item in examples]
+    return example_questions("en")
+
+
+def t(lang: str, key: str, **kwargs: Any) -> Any:
+    """Return a localized string or list for `key`, with optional format kwargs."""
+    bundle = UI.get(lang, UI["en"])
+    value = bundle.get(key, UI["en"].get(key, key))
+    if isinstance(value, str) and kwargs:
+        return value.format(**kwargs)
+    return value
+
+
+def mode_label(lang: str, mode: str) -> str:
+    """Return a localized label for a generation mode code."""
+    key = f"mode_{mode}"
+    bundle = UI.get(lang, UI["en"])
+    if key in bundle:
+        return str(bundle[key])
+    return mode.replace("_", " ")
+
+
+def status_label(lang: str, grounded: bool, mode: str) -> str:
+    """Return a localized status line for the answer panel."""
+    if mode == "empty_index":
+        return str(t(lang, "status_empty"))
+    if grounded:
+        return str(t(lang, "status_grounded"))
+    return str(t(lang, "status_refused"))
