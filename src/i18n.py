@@ -37,7 +37,7 @@ UI: dict[str, dict[str, Any]] = {
         "subtitle": (
             "Ask about public WHO guidance in your language. "
             "The index holds English and French passages; answers include "
-            "citations — or a clear refusal when retrieval is too weak."
+            "citations, or a clear refusal when retrieval is too weak."
         ),
         "portfolio_note": "Portfolio demo · not an official WHO tool",
         "question": "Your question",
@@ -67,14 +67,14 @@ UI: dict[str, dict[str, Any]] = {
             "and a refusal when it is not."
         ),
         "retry": "Search again",
-        "status_grounded": "Grounded — supported by indexed passages",
-        "status_refused": "Refused — retrieval match too weak to answer safely",
-        "status_empty": "Index empty — build the index before searching",
+        "status_grounded": "Grounded, supported by indexed passages",
+        "status_refused": "Refused, retrieval match too weak to answer safely",
+        "status_empty": "Index empty, build the index before searching",
         "mode_llm": "Drafted from retrieved passages (LLM)",
         "mode_extractive": "Showing top matching passages (no API key configured)",
-        "mode_refused": "Generation skipped — see explanation below",
+        "mode_refused": "Generation skipped, see explanation below",
         "mode_empty_index": "No documents indexed yet",
-        "mode_llm_error": "Model unavailable — showing matching passages instead",
+        "mode_llm_error": "Model unavailable, showing matching passages instead",
         "sidebar_lang": "Interface language",
         "sidebar_about": "About",
         "sidebar_body": (
@@ -103,7 +103,7 @@ UI: dict[str, dict[str, Any]] = {
         "msg_refusal": (
             "No passage matched this question closely enough to answer safely. "
             "Ask about mental health, universal health coverage, or primary "
-            "health care — or search both English and French documents."
+            "health care, or search both English and French documents."
         ),
         "msg_extractive_header": (
             "No LLM API key configured. Top matching passages:"
@@ -129,8 +129,8 @@ UI: dict[str, dict[str, Any]] = {
         "title": "QA sur les orientations OMS",
         "subtitle": (
             "Posez une question sur des orientations OMS publiques dans votre langue. "
-            "L’index contient des passages en anglais et en français ; les réponses "
-            "sont citées — ou clairement refusées si la récupération est trop faible."
+            "L’index contient des passages en anglais et en français, les réponses "
+            "sont citées, ou clairement refusées si la récupération est trop faible."
         ),
         "portfolio_note": "Démo portfolio · pas un outil officiel de l’OMS",
         "question": "Votre question",
@@ -160,14 +160,14 @@ UI: dict[str, dict[str, Any]] = {
             "et un refus dans le cas contraire."
         ),
         "retry": "Relancer la recherche",
-        "status_grounded": "Fondé — appuyé par des passages indexés",
-        "status_refused": "Refusé — correspondance trop faible pour répondre",
-        "status_empty": "Index vide — construisez l’index avant de chercher",
+        "status_grounded": "Fondé, appuyé par des passages indexés",
+        "status_refused": "Refusé, correspondance trop faible pour répondre",
+        "status_empty": "Index vide, construisez l’index avant de chercher",
         "mode_llm": "Rédigé à partir des passages (LLM)",
         "mode_extractive": "Meilleurs passages (aucune clé API configurée)",
-        "mode_refused": "Génération ignorée — voir l’explication ci-dessous",
+        "mode_refused": "Génération ignorée, voir l’explication ci-dessous",
         "mode_empty_index": "Aucun document indexé",
-        "mode_llm_error": "Modèle indisponible — passages affichés à la place",
+        "mode_llm_error": "Modèle indisponible, passages affichés à la place",
         "sidebar_lang": "Langue de l’interface",
         "sidebar_about": "À propos",
         "sidebar_body": (
@@ -223,7 +223,7 @@ UI: dict[str, dict[str, Any]] = {
         "subtitle": (
             "Stellen Sie Fragen zu öffentlichen WHO-Leitlinien in Ihrer Sprache. "
             "Der Index enthält englische und französische Passagen; Antworten "
-            "sind zitiert — oder klar abgelehnt, wenn die Suche zu schwach ist."
+            "sind zitiert, oder klar abgelehnt, wenn die Suche zu schwach ist."
         ),
         "portfolio_note": "Portfolio-Demo · kein offizielles WHO-Tool",
         "question": "Ihre Frage",
@@ -249,18 +249,18 @@ UI: dict[str, dict[str, Any]] = {
         "loading": "Durchsuche indexierte WHO-Leitlinien…",
         "first_visit": (
             "Geben Sie oben eine Frage ein oder wählen Sie ein Beispiel. "
-            "Sie erhalten eine zitierte Antwort bei starker Suche — "
+            "Sie erhalten eine zitierte Antwort bei starker Suche, "
             "sonst eine klare Ablehnung."
         ),
         "retry": "Erneut suchen",
-        "status_grounded": "Belegt — gestützt durch indexierte Passagen",
-        "status_refused": "Abgelehnt — Treffer zu schwach für eine sichere Antwort",
-        "status_empty": "Index leer — zuerst Index aufbauen",
+        "status_grounded": "Belegt, gestützt durch indexierte Passagen",
+        "status_refused": "Abgelehnt. Treffer zu schwach für eine sichere Antwort",
+        "status_empty": "Index leer, zuerst Index aufbauen",
         "mode_llm": "Aus abgerufenen Passagen formuliert (LLM)",
         "mode_extractive": "Beste Passagen (kein API-Schlüssel)",
-        "mode_refused": "Keine Generierung — siehe Erklärung unten",
+        "mode_refused": "Keine Generierung, siehe Erklärung unten",
         "mode_empty_index": "Noch keine Dokumente indexiert",
-        "mode_llm_error": "Modell nicht verfügbar — Passagen statt Antwort",
+        "mode_llm_error": "Modell nicht verfügbar. Passagen statt Antwort",
         "sidebar_lang": "Oberflächensprache",
         "sidebar_about": "Über diese Demo",
         "sidebar_body": (
@@ -316,7 +316,7 @@ UI: dict[str, dict[str, Any]] = {
         "subtitle": (
             "Fate domande sugli orientamenti OMS pubblici nella vostra lingua. "
             "L’indice contiene passaggi in inglese e francese; le risposte "
-            "sono citate — o rifiutate se il recupero è troppo debole."
+            "sono citate, o rifiutate se il recupero è troppo debole."
         ),
         "portfolio_note": "Demo portfolio · non uno strumento ufficiale OMS",
         "question": "La vostra domanda",
@@ -346,14 +346,14 @@ UI: dict[str, dict[str, Any]] = {
             "altrimenti un rifiuto chiaro."
         ),
         "retry": "Cerca di nuovo",
-        "status_grounded": "Fondato — supportato da passaggi indicizzati",
-        "status_refused": "Rifiutato — corrispondenza troppo debole",
-        "status_empty": "Indice vuoto — costruite prima l’indice",
+        "status_grounded": "Fondato, supportato da passaggi indicizzati",
+        "status_refused": "Rifiutato, corrispondenza troppo debole",
+        "status_empty": "Indice vuoto, costruite prima l’indice",
         "mode_llm": "Redatto dai passaggi recuperati (LLM)",
         "mode_extractive": "Passaggi migliori (nessuna chiave API)",
-        "mode_refused": "Generazione saltata — vedi spiegazione sotto",
+        "mode_refused": "Generazione saltata, vedi spiegazione sotto",
         "mode_empty_index": "Nessun documento indicizzato",
-        "mode_llm_error": "Modello non disponibile — mostro i passaggi",
+        "mode_llm_error": "Modello non disponibile, mostro i passaggi",
         "sidebar_lang": "Lingua dell’interfaccia",
         "sidebar_about": "Informazioni",
         "sidebar_body": (
@@ -409,7 +409,7 @@ UI: dict[str, dict[str, Any]] = {
         "subtitle": (
             "Pergunte sobre orientações públicas da OMS no seu idioma. "
             "O índice contém trechos em inglês e francês; as respostas "
-            "vêm com citações — ou uma recusa clara quando a recuperação é fraca."
+            "vêm com citações, ou uma recusa clara quando a recuperação é fraca."
         ),
         "portfolio_note": "Demo de portfólio · não é uma ferramenta oficial da OMS",
         "question": "A sua pergunta",
@@ -439,14 +439,14 @@ UI: dict[str, dict[str, Any]] = {
             "e uma recusa quando não for."
         ),
         "retry": "Pesquisar novamente",
-        "status_grounded": "Fundamentado — apoiado por trechos indexados",
-        "status_refused": "Recusado — correspondência demasiado fraca",
-        "status_empty": "Índice vazio — construa o índice primeiro",
+        "status_grounded": "Fundamentado, apoiado por trechos indexados",
+        "status_refused": "Recusado, correspondência demasiado fraca",
+        "status_empty": "Índice vazio, construa o índice primeiro",
         "mode_llm": "Redigido a partir dos trechos (LLM)",
         "mode_extractive": "Melhores trechos (sem chave de API)",
-        "mode_refused": "Geração omitida — ver explicação abaixo",
+        "mode_refused": "Geração omitida, ver explicação abaixo",
         "mode_empty_index": "Ainda sem documentos indexados",
-        "mode_llm_error": "Modelo indisponível — a mostrar trechos",
+        "mode_llm_error": "Modelo indisponível, a mostrar trechos",
         "sidebar_lang": "Idioma da interface",
         "sidebar_about": "Sobre",
         "sidebar_body": (
@@ -501,7 +501,7 @@ UI: dict[str, dict[str, Any]] = {
         "title": "世卫组织指南问答",
         "subtitle": (
             "可用您的语言就公开的世卫组织主题指南提问。"
-            "索引收录英文与法文段落；回答附带出处引用——"
+            "索引收录英文与法文段落；回答附带出处引用，, "
             "若检索匹配过弱，则会明确拒绝作答。"
         ),
         "portfolio_note": "作品集演示 · 非世卫组织官方工具",
@@ -530,14 +530,14 @@ UI: dict[str, dict[str, Any]] = {
             "检索足够强时会给出带引用的回答；否则会明确拒绝。"
         ),
         "retry": "重新检索",
-        "status_grounded": "有依据 — 由索引段落支持",
-        "status_refused": "已拒绝 — 匹配过弱，无法安全作答",
-        "status_empty": "索引为空 — 请先构建索引",
+        "status_grounded": "有依据, 由索引段落支持",
+        "status_refused": "已拒绝, 匹配过弱，无法安全作答",
+        "status_empty": "索引为空, 请先构建索引",
         "mode_llm": "根据检索段落起草（大模型）",
         "mode_extractive": "显示最相关段落（未配置 API 密钥）",
-        "mode_refused": "已跳过生成 — 见下方说明",
+        "mode_refused": "已跳过生成, 见下方说明",
         "mode_empty_index": "尚未索引任何文档",
-        "mode_llm_error": "模型不可用 — 改为显示段落",
+        "mode_llm_error": "模型不可用, 改为显示段落",
         "sidebar_lang": "界面语言",
         "sidebar_about": "关于",
         "sidebar_body": (
@@ -587,8 +587,8 @@ UI: dict[str, dict[str, Any]] = {
         "title": "QA по руководствам ВОЗ",
         "subtitle": (
             "Задавайте вопросы по открытым тематическим руководствам ВОЗ "
-            "на своём языке. В индексе — английские и французские фрагменты; "
-            "ответы с цитатами — или явный отказ при слабом поиске."
+            "на своём языке. В индексе, английские и французские фрагменты; "
+            "ответы с цитатами, или явный отказ при слабом поиске."
         ),
         "portfolio_note": "Портфолио-демо · не официальный инструмент ВОЗ",
         "question": "Ваш вопрос",
@@ -599,7 +599,7 @@ UI: dict[str, dict[str, Any]] = {
         "answer_lang": "Язык ответа",
         "search_both": "Искать в английских и французских документах вместе",
         "search_both_help": (
-            "Корпус — на английском и французском. Многоязычные эмбеддинги "
+            "Корпус, на английском и французском. Многоязычные эмбеддинги "
             "могут сопоставлять и другие языки вопросов. Отключите, чтобы "
             "ограничить язык документов."
         ),
@@ -615,17 +615,17 @@ UI: dict[str, dict[str, Any]] = {
         "first_visit": (
             "Введите вопрос выше или выберите пример. "
             "При сильном поиске вы увидите ответ с цитатами, "
-            "иначе — явный отказ."
+            "иначе, явный отказ."
         ),
         "retry": "Искать снова",
-        "status_grounded": "Обосновано — опирается на индексированные фрагменты",
-        "status_refused": "Отказ — совпадение слишком слабое",
-        "status_empty": "Индекс пуст — сначала постройте индекс",
+        "status_grounded": "Обосновано, опирается на индексированные фрагменты",
+        "status_refused": "Отказ, совпадение слишком слабое",
+        "status_empty": "Индекс пуст, сначала постройте индекс",
         "mode_llm": "Составлено по найденным фрагментам (LLM)",
         "mode_extractive": "Лучшие фрагменты (нет API-ключа)",
-        "mode_refused": "Генерация пропущена — см. пояснение ниже",
+        "mode_refused": "Генерация пропущена, см. пояснение ниже",
         "mode_empty_index": "Документы ещё не проиндексированы",
-        "mode_llm_error": "Модель недоступна — показаны фрагменты",
+        "mode_llm_error": "Модель недоступна, показаны фрагменты",
         "sidebar_lang": "Язык интерфейса",
         "sidebar_about": "О проекте",
         "sidebar_body": (

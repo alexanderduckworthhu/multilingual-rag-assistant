@@ -1,11 +1,11 @@
 ================================================================================
-MULTILINGUAL RAG (WHO GUIDANCE QA) — REVERSE ENGINEERING GUIDE
+MULTILINGUAL RAG (WHO GUIDANCE QA). REVERSE ENGINEERING GUIDE
 ================================================================================
 Purpose: Teach yourself how this portfolio project works by walking backward
 from the Streamlit answer to the raw text files. Read with the code open.
 
 Audience: You (career-changer / INFJ who needs the WHY). Not for hiring managers
-— they get the README and docs/interview_talking_points.md.
+,  they get the README and docs/interview_talking_points.md.
 
 Sibling project note: where-needs-overlap is a separate humanitarian dashboard.
 Do not mix their data pipelines. This project is retrieval + grounded generation.
@@ -17,7 +17,7 @@ Do not mix their data pipelines. This project is retrieval + grounded generation
 Question the whole app answers:
 
   "Given public WHO guidance in English and French, can I answer a user's
-   question with citations — and refuse when the corpus does not support it?"
+   question with citations, and refuse when the corpus does not support it?"
 
 If a feature does not improve grounding, multilingual access, or measurable
 retrieval, it does not belong. That filter stops INFJ overbuilding.
@@ -68,7 +68,7 @@ Mental model:
 
 
 --------------------------------------------------------------------------------
-3. FILE MAP — WHAT EACH FILE OWNS
+3. FILE MAP. WHAT EACH FILE OWNS
 --------------------------------------------------------------------------------
 
 src/config.py
@@ -86,7 +86,7 @@ src/ingest/chunk.py
   - chunk_id format: {doc_id}::c{index:04d}  ← used as citation tokens
 
 src/ingest/embed.py
-  - E5 prefixes are NOT optional cosmetics — model was trained with them
+  - E5 prefixes are NOT optional cosmetics, model was trained with them
   - normalize_embeddings=True so cosine distance behaves cleanly
 
 src/retrieve/store.py
@@ -106,7 +106,7 @@ src/generate/answer.py
   - Extractive mode is intentional: portfolio demos must run without paid keys
 
 src/eval/metrics.py
-  - precision@k and MRR only — do not inflate claims with BLEU on answers
+  - precision@k and MRR only, do not inflate claims with BLEU on answers
 
 src/i18n.py
   - All Streamlit chrome strings EN/FR
@@ -133,13 +133,13 @@ src/i18n.py
 
 
 --------------------------------------------------------------------------------
-4. ARCHITECTURE DECISIONS — THE WHY (interview depth)
+4. ARCHITECTURE DECISIONS. THE WHY (interview depth)
 --------------------------------------------------------------------------------
 
 4.1 Chunking strategy
   WHAT: Recursive character splitting, size=800, overlap=120
   WHY: Policy prose has paragraphs and lists. Recursive split tries paragraph
-       breaks first, then sentences — keeps chunks coherent without an LLM.
+       breaks first, then sentences, keeps chunks coherent without an LLM.
        Overlap is cheap insurance when an answer straddles two chunks.
   TRADE-OFF: Semantic / proposition chunking can be cleaner but adds another
        model and failure mode. For entry-level, explainability wins.
@@ -161,7 +161,7 @@ src/i18n.py
 4.4 LLM
   WHAT: gpt-4o-mini, temperature 0; extractive fallback without key
   WHY: Strong instruction following for citation prompts; cheap.
-  TRADE-OFF: Generation quality is vendor-dependent — that is why you evaluate
+  TRADE-OFF: Generation quality is vendor-dependent, that is why you evaluate
        RETRIEVAL as your engineering claim.
 
 4.5 Corpus choice
@@ -199,20 +199,20 @@ Why this matters for Geneva roles:
 --------------------------------------------------------------------------------
 Do not claim the model "never hallucinates." Claim you engineered friction:
 
-  (1) Retrieval gate — weak match ⇒ refuse before generation
-  (2) Closed context — prompt forbids outside knowledge
-  (3) Citations — every factual sentence ends with [chunk_id]
-  (4) Temperature 0 — less improvisation
-  (5) Transparent UI — raw passages always visible
-  (6) Measured retrieval — precision@k + MRR on a golden set
+  (1) Retrieval gate, weak match ⇒ refuse before generation
+  (2) Closed context, prompt forbids outside knowledge
+  (3) Citations, every factual sentence ends with [chunk_id]
+  (4) Temperature 0, less improvisation
+  (5) Transparent UI, raw passages always visible
+  (6) Measured retrieval, precision@k + MRR on a golden set
 
 If an interviewer pushes: "What if the retrieved chunk is wrong?"
-Answer: "Then generation can still fail — that is why I evaluate retrieval
+Answer: "Then generation can still fail, that is why I evaluate retrieval
 separately and keep the human in the loop via visible sources."
 
 
 --------------------------------------------------------------------------------
-7. EVALUATION — HOW TO READ THE NUMBERS
+7. EVALUATION. HOW TO READ THE NUMBERS
 --------------------------------------------------------------------------------
 Golden set: data/eval/golden_queries.json
   Each row: query, relevant doc_id prefixes, optional language_filter
@@ -259,7 +259,7 @@ Symptom: French question retrieves nothing useful
   Check: E5 prefixes still applied in embed.py
 
 Symptom: Fluent answer with no citations
-  Check: OPENAI_API_KEY path — prompts.py must be used
+  Check: OPENAI_API_KEY path, prompts.py must be used
   Check: you are not in extractive mode (extractive lists passages instead)
 
 Symptom: Always refusing
@@ -300,6 +300,6 @@ If you can answer those, you are interview-ready on this project.
 
 ================================================================================
 End of reverse-engineering guide. Prefer changing one knob in src/config.py,
-rebuilding, and watching eval_report.json move — that is how the WHY becomes
+rebuilding, and watching eval_report.json move, that is how the WHY becomes
 muscle memory.
 ================================================================================

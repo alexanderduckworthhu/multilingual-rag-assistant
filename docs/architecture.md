@@ -1,8 +1,8 @@
-# Architecture — WHO Guidance QA
+# Architecture: WHO Guidance QA
 
 ## One sentence
 
-Answer grounded questions over public WHO guidance in English and French, with citations — and refuse when retrieval is weak.
+Answer grounded questions over public WHO guidance in English and French, with citations, and refuse when retrieval is weak.
 
 ## Pipeline
 
@@ -43,18 +43,18 @@ data/sample + data/raw
 ## Multilingual indexing
 
 1. Embed every passage with the same multilingual model.  
-2. Store `language` in metadata — do not create separate collections unless hard isolation is required.  
+2. Store `language` in metadata, do not create separate collections unless hard isolation is required.  
 3. At query time, optionally filter `where={"language": "fr"}`; default searches both.  
 4. Answer language is independent of retrieve language.
 
 ## Hallucination-reduction stack
 
 1. Refuse if best cosine distance exceeds threshold.  
-2. Closed context — prompt forbids outside knowledge.  
-3. Citations required — each claim ends with `[chunk_id]`.  
+2. Closed context, prompt forbids outside knowledge.  
+3. Citations required, each claim ends with `[chunk_id]`.  
 4. Temperature 0.  
 5. UI shows raw passages for human verification.  
-6. Publish Precision@k and MRR — do not claim “no hallucinations.”
+6. Publish Precision@k and MRR, do not claim “no hallucinations.”
 
 ## Evaluation
 

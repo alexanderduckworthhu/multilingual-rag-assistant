@@ -22,7 +22,7 @@ _GOOGLE_LANG_CODES: dict[str, str] = {
     "ru": "ru",
 }
 
-# Google free endpoint soft limit — keep chunks under this.
+# Google free endpoint soft limit, keep chunks under this.
 _MAX_CHARS_PER_REQUEST = 4500
 
 
@@ -117,7 +117,7 @@ def prepare_display_passages(
     prepared: list[DisplayPassage] = []
     for chunk in chunks:
         needs_translation = chunk.language != target_language
-        # Same-language corpus hit — no translation.
+        # Same-language corpus hit, no translation.
         if not needs_translation:
             display_text = chunk.text
             was_translated = False

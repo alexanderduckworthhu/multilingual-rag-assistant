@@ -47,7 +47,7 @@ def reset_collection(client: chromadb.PersistentClient | None = None) -> None:
     try:
         chroma_client.delete_collection(COLLECTION_NAME)
     except ValueError:
-        # Collection missing — safe to create fresh.
+        # Collection missing, safe to create fresh.
         pass
     except Exception:
         logger.exception("Unexpected error deleting collection %s", COLLECTION_NAME)

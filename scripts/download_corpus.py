@@ -28,29 +28,29 @@ if str(ROOT) not in sys.path:
 
 from src.config import RAW_DIR
 
-# Curated bilingual pairs — public WHO health-topic pages
+# Curated bilingual pairs, public WHO health-topic pages
 CORPUS = [
     {
         "doc_id": "who_web_mental_health_en",
-        "title": "WHO — Mental health (web)",
+        "title": "WHO: Mental health (web)",
         "language": "en",
         "url": "https://www.who.int/health-topics/mental-health",
     },
     {
         "doc_id": "who_web_mental_health_fr",
-        "title": "OMS — Santé mentale (web)",
+        "title": "OMS: Santé mentale (web)",
         "language": "fr",
         "url": "https://www.who.int/fr/health-topics/mental-health",
     },
     {
         "doc_id": "who_web_uhc_en",
-        "title": "WHO — Universal health coverage (web)",
+        "title": "WHO: Universal health coverage (web)",
         "language": "en",
         "url": "https://www.who.int/health-topics/universal-health-coverage",
     },
     {
         "doc_id": "who_web_uhc_fr",
-        "title": "OMS — Couverture sanitaire universelle (web)",
+        "title": "OMS: Couverture sanitaire universelle (web)",
         "language": "fr",
         "url": "https://www.who.int/fr/health-topics/universal-health-coverage",
     },
@@ -97,11 +97,11 @@ def main() -> None:
             resp = requests.get(item["url"], headers=headers, timeout=60)
             resp.raise_for_status()
         except requests.RequestException as exc:
-            print(f"  SKIP: request failed — {exc}")
+            print(f"  SKIP: request failed, {exc}")
             continue
         text = html_to_text(resp.text)
         if len(text) < 200:
-            print(f"  WARNING: short extract ({len(text)} chars) — page may be JS-heavy.")
+            print(f"  WARNING: short extract ({len(text)} chars), page may be JS-heavy.")
         out = RAW_DIR / f"{item['doc_id']}.txt"
         try:
             out.write_text(text, encoding="utf-8")
@@ -116,7 +116,7 @@ def main() -> None:
                 json.dumps(meta, indent=2), encoding="utf-8"
             )
         except OSError as exc:
-            print(f"  SKIP: write failed — {exc}")
+            print(f"  SKIP: write failed, {exc}")
             continue
         print(f"  Wrote {out} ({len(text)} chars)")
     print("Done. Rebuild index with: python -m scripts.build_index")

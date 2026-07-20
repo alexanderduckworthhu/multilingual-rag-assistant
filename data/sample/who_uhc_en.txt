@@ -1,4 +1,4 @@
-WHO guidance excerpt — Universal health coverage (educational sample for RAG portfolio)
+WHO guidance excerpt: Universal health coverage (educational sample for RAG portfolio)
 
 Universal health coverage (UHC) means that all people have access to the full range
 of quality health services they need, when and where they need them, without
@@ -13,8 +13,8 @@ linked to health care in many countries.
 
 Primary health care (PHC) is the cornerstone of UHC. WHO recommends reorienting
 health systems toward PHC to improve equity, efficiency, and resilience. Essential
-public health functions — surveillance, preparedness, health promotion, and
-regulation — must be financed and governed alongside clinical services.
+public health functions, surveillance, preparedness, health promotion, and
+regulation, must be financed and governed alongside clinical services.
 
 To advance UHC, countries should strengthen domestic public financing, reduce
 reliance on out-of-pocket spending, invest in health and care workers, improve

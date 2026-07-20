@@ -5,35 +5,35 @@ A multilingual document question-answering assistant over public WHO topic guida
 | | |
 |---|---|
 | **Live demo** | _Add Streamlit Cloud URL after deploy_ |
-| **Status** | Portfolio demo ; **not** an official WHO product |
+| **Status** | Portfolio demo, **not** an official WHO product |
 | **Latest retrieval eval** | Precision@5 **0.65** · MRR **0.938** (n=8 golden queries) |
 
 ---
 
 ## Why it exists
 
-Policy and health analysts often need a short answer grounded in WHO wording ; not a fluent paraphrase from a general-purpose chat model. Generic assistants invent citations; monolingual search fails in Geneva’s bilingual workflow. This project indexes English and French guidance in one vector space, answers with passage IDs, and refuses when retrieval is weak.
+Policy and health analysts often need a short answer grounded in WHO wording, not a fluent paraphrase from a general-purpose chat model. Generic assistants invent citations; monolingual search fails in Geneva’s bilingual workflow. This project indexes English and French guidance in one vector space, answers with passage IDs, and refuses when retrieval is weak.
 
 ---
 
 ## Technical decisions
 
-- **Corpus ; WHO topic guidance (mental health, UHC, primary health care), EN+FR**  
+- **Corpus. WHO topic guidance (mental health, UHC, primary health care), EN+FR**  
   Considered UNGA resolutions. Chose WHO for denser prose, natural bilingual pairs, and Geneva HQ relevance. UNGA remains a v2 corpus once metrics are stable.
 
-- **Chunking ; recursive character split, 800 chars / 120 overlap**  
+- **Chunking, recursive character split, 800 chars / 120 overlap**  
   Considered semantic/LLM chunking. Chose recursive split for deterministic, debuggable boundaries; overlap reduces answers split across chunks.
 
-- **Embeddings ; `intfloat/multilingual-e5-small`**  
+- **Embeddings, `intfloat/multilingual-e5-small`**  
   Considered OpenAI `text-embedding-3-small`. Chose E5 for a shared EN/FR space, offline demos, and explicit `query:` / `passage:` prefixes that are interview-defensible.
 
-- **Vector store ; Chroma (cosine, local persist)**  
+- **Vector store. Chroma (cosine, local persist)**  
   Considered FAISS and Pinecone. Chose Chroma for metadata filters, zero Docker/cloud cost, and inspectable on-disk indexes.
 
-- **Generator ; `gpt-4o-mini` (temperature 0) + extractive fallback**  
+- **Generator, `gpt-4o-mini` (temperature 0) + extractive fallback**  
   Considered local Ollama-only. Chose a citation-capable cloud model with a no-key extractive path so retrieval quality stays visible without paid credentials.
 
-- **Trust stack ; distance gate → closed-context prompt → `[chunk_id]` citations → UI passages**  
+- **Trust stack, distance gate → closed-context prompt → `[chunk_id]` citations → UI passages**  
   Evaluates retrieval (Precision@k, MRR) as the engineering claim; does not assert “zero hallucinations.”
 
 ---
@@ -57,7 +57,7 @@ Reproduce: rebuild the index, then re-run eval (commands below). Report file: `d
 | Field | Detail |
 |---|---|
 | **Source** | Educational WHO-topic excerpts in `data/sample/` (EN/FR), plus optional HTML extracts via `scripts/download_corpus.py` from public WHO health-topic pages |
-| **License / use** | Public web content for a **portfolio demo only** ; not redistributed as official WHO publications; not for clinical or operational decisions |
+| **License / use** | Public web content for a **portfolio demo only**, not redistributed as official WHO publications; not for clinical or operational decisions |
 | **Languages** | Indexed corpus: English + French. UI / questions / answers: EN, FR, DE, IT, PT, ZH (Mandarin), RU via multilingual-e5 + i18n |
 | **Provenance** | Each passage keeps `doc_id`, `title`, `source_url`, `chunk_id` for citation and audit |
 | **Production gap** | Replace samples with WHO IRIS / licensed corpora, add access logging, retention policy, and human review for high-stakes answers |
@@ -99,9 +99,9 @@ Tests: `pytest -q`
 
 ## What I'd improve next
 
-1. **Hybrid retrieval (BM25 + dense) + cross-encoder rerank** ; Precision@5 is diluted when several chunks from the right doc crowd the top-k; a reranker would lift passage-level precision without abandoning multilingual dense search.
-2. **Faithfulness check (NLI / entailment) as a second gate** ; the distance threshold blocks weak retrieval; it does not catch a fluent model that overstates a retrieved sentence.
-3. **WHO IRIS PDF pipeline with page-level provenance** ; sample texts prove the architecture; production needs licensed PDFs, cleaner extraction, and page anchors in citations.
+1. **Hybrid retrieval (BM25 + dense) + cross-encoder rerank**. Precision@5 is diluted when several chunks from the right doc crowd the top-k; a reranker would lift passage-level precision without abandoning multilingual dense search.
+2. **Faithfulness check (NLI / entailment) as a second gate**, the distance threshold blocks weak retrieval; it does not catch a fluent model that overstates a retrieved sentence.
+3. **WHO IRIS PDF pipeline with page-level provenance**, sample texts prove the architecture; production needs licensed PDFs, cleaner extraction, and page anchors in citations.
 
 ---
 

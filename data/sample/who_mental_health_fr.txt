@@ -1,4 +1,4 @@
-Extrait d'orientation OMS — Santé mentale (échantillon éducatif pour portfolio RAG)
+Extrait d'orientation OMS: Santé mentale (échantillon éducatif pour portfolio RAG)
 
 La santé mentale est un état de bien-être mental qui permet aux personnes de faire
 face aux stresses de la vie, de réaliser leurs capacités, d'apprendre et de

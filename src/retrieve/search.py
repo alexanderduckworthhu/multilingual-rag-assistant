@@ -122,7 +122,7 @@ def retrieve(
         logger.exception("Query embedding failed for query=%r", query)
         return [], False
 
-    # Hard language filter from the UI — no fallback.
+    # Hard language filter from the UI, no fallback.
     if language in CORPUS_LANG_CODES:
         try:
             passages = _query_collection(
