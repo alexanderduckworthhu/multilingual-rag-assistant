@@ -83,6 +83,7 @@ UI: dict[str, dict[str, Any]] = {
             "Russian against a shared EN/FR index, with citations and a distance gate."
         ),
         "sidebar_ready": "{n} passages indexed",
+        "index_preparing": "Preparing the search index…",
         "sidebar_empty": (
             "Index is empty. From the project root run:\n"
             "`python -m scripts.build_index`"
@@ -97,8 +98,7 @@ UI: dict[str, dict[str, Any]] = {
             "What is universal health coverage?",
         ],
         "msg_empty_index": (
-            "The local index is empty. "
-            "Run `python -m scripts.build_index`, then search again."
+            "The search index is still warming up. Wait a moment, then try again."
         ),
         "msg_refusal": (
             "No passage matched this question closely enough to answer safely. "
@@ -176,6 +176,7 @@ UI: dict[str, dict[str, Any]] = {
             "portugais, chinois ou russe contre un index EN/FR partagé."
         ),
         "sidebar_ready": "{n} passages indexés",
+        "index_preparing": "Préparation de l’index de recherche…",
         "sidebar_empty": (
             "L’index est vide. Depuis la racine du projet :\n"
             "`python -m scripts.build_index`"
@@ -190,8 +191,7 @@ UI: dict[str, dict[str, Any]] = {
             "Qu'est-ce que la couverture sanitaire universelle ?",
         ],
         "msg_empty_index": (
-            "L’index local est vide. "
-            "Lancez `python -m scripts.build_index`, puis relancez la recherche."
+            "L’index de recherche est encore en cours de préparation. Réessayez dans un instant."
         ),
         "msg_refusal": (
             "Aucun passage ne correspond assez pour répondre de façon fiable. "
@@ -269,6 +269,7 @@ UI: dict[str, dict[str, Any]] = {
             "gegen einen gemeinsamen EN/FR-Index, mit Zitaten und Ablehnungsschwelle."
         ),
         "sidebar_ready": "{n} Passagen indexiert",
+        "index_preparing": "Suchindex wird vorbereitet…",
         "sidebar_empty": (
             "Index ist leer. Im Projektordner ausführen:\n"
             "`python -m scripts.build_index`"
@@ -283,8 +284,7 @@ UI: dict[str, dict[str, Any]] = {
             "Was ist universelle Gesundheitsversorgung?",
         ],
         "msg_empty_index": (
-            "Der lokale Index ist leer. "
-            "Führen Sie `python -m scripts.build_index` aus und suchen Sie erneut."
+            "Der Suchindex wird noch vorbereitet. Bitte versuchen Sie es gleich erneut."
         ),
         "msg_refusal": (
             "Kein Passagen-Treffer war stark genug für eine sichere Antwort. "
@@ -362,6 +362,7 @@ UI: dict[str, dict[str, Any]] = {
             "condiviso, con citazioni e soglia di rifiuto."
         ),
         "sidebar_ready": "{n} passaggi indicizzati",
+        "index_preparing": "Preparazione dell’indice di ricerca…",
         "sidebar_empty": (
             "L’indice è vuoto. Dalla root del progetto:\n"
             "`python -m scripts.build_index`"
@@ -376,8 +377,7 @@ UI: dict[str, dict[str, Any]] = {
             "Cos’è la copertura sanitaria universale?",
         ],
         "msg_empty_index": (
-            "L’indice locale è vuoto. "
-            "Eseguite `python -m scripts.build_index`, poi cercate di nuovo."
+            "L’indice di ricerca è ancora in preparazione. Riprova tra un momento."
         ),
         "msg_refusal": (
             "Nessun passaggio corrisponde abbastanza per rispondere in sicurezza. "
@@ -455,6 +455,7 @@ UI: dict[str, dict[str, Any]] = {
             "partilhado, com citações e limiar de recusa."
         ),
         "sidebar_ready": "{n} trechos indexados",
+        "index_preparing": "A preparar o índice de pesquisa…",
         "sidebar_empty": (
             "O índice está vazio. Na raiz do projeto execute:\n"
             "`python -m scripts.build_index`"
@@ -469,8 +470,7 @@ UI: dict[str, dict[str, Any]] = {
             "O que é cobertura universal de saúde?",
         ],
         "msg_empty_index": (
-            "O índice local está vazio. "
-            "Execute `python -m scripts.build_index` e pesquise novamente."
+            "O índice de pesquisa ainda está a ser preparado. Tente novamente dentro de momentos."
         ),
         "msg_refusal": (
             "Nenhum trecho correspondeu o suficiente para responder com segurança. "
@@ -546,6 +546,7 @@ UI: dict[str, dict[str, Any]] = {
             "并带有引用与弱匹配拒答机制。"
         ),
         "sidebar_ready": "已索引 {n} 个段落",
+        "index_preparing": "正在准备检索索引…",
         "sidebar_empty": (
             "索引为空。请在项目根目录运行：\n"
             "`python -m scripts.build_index`"
@@ -560,8 +561,7 @@ UI: dict[str, dict[str, Any]] = {
             "什么是全民健康覆盖？",
         ],
         "msg_empty_index": (
-            "本地索引为空。"
-            "请运行 `python -m scripts.build_index` 后再检索。"
+            "检索索引仍在准备中，请稍后再试。"
         ),
         "msg_refusal": (
             "没有足够接近的段落可安全作答。"
@@ -634,6 +634,7 @@ UI: dict[str, dict[str, Any]] = {
             "с цитатами и порогом отказа при слабом совпадении."
         ),
         "sidebar_ready": "Проиндексировано фрагментов: {n}",
+        "index_preparing": "Подготовка поискового индекса…",
         "sidebar_empty": (
             "Индекс пуст. В корне проекта выполните:\n"
             "`python -m scripts.build_index`"
@@ -648,8 +649,7 @@ UI: dict[str, dict[str, Any]] = {
             "Что такое всеобщий охват услугами здравоохранения?",
         ],
         "msg_empty_index": (
-            "Локальный индекс пуст. "
-            "Выполните `python -m scripts.build_index` и повторите поиск."
+            "Поисковый индекс ещё готовится. Подождите немного и попробуйте снова."
         ),
         "msg_refusal": (
             "Нет достаточно близкого фрагмента для безопасного ответа. "

@@ -4,7 +4,7 @@ A multilingual document question-answering assistant over public WHO topic guida
 
 | | |
 |---|---|
-| **Live demo** | _Add Streamlit Cloud URL after deploy_ |
+| **Live demo** | https://multilingual-rag-assistant.streamlit.app/ |
 | **Status** | Portfolio demo, **not** an official WHO product |
 | **Latest retrieval eval** | Precision@5 **0.65** · MRR **0.938** (n=8 golden queries) |
 

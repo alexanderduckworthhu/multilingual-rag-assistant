@@ -31,6 +31,7 @@ from src.i18n import (  # noqa: E402
     status_label,
     t,
 )
+from src.retrieve.ensure_index import ensure_index  # noqa: E402
 from src.retrieve.store import collection_count  # noqa: E402
 from src.styles import APP_CSS  # noqa: E402
 
@@ -43,6 +44,12 @@ st.set_page_config(
 )
 
 st.markdown(f"<style>{APP_CSS}</style>", unsafe_allow_html=True)
+
+
+@st.cache_resource(show_spinner=False)
+def _cached_ensure_index() -> int:
+    """Build the sample index once per container if it is missing."""
+    return ensure_index()
 
 
 def _init_session_state() -> None:
@@ -221,15 +228,17 @@ def main() -> None:
         st.write(str(t(ui_lang, "sidebar_body")))
 
         try:
-            indexed_passage_count = collection_count()
+            with st.spinner(str(t(ui_lang, "index_preparing"))):
+                indexed_passage_count = _cached_ensure_index()
         except Exception:
-            logger.exception("Failed to read Chroma collection count")
-            indexed_passage_count = 0
+            logger.exception("Failed to ensure search index")
+            try:
+                indexed_passage_count = collection_count()
+            except Exception:
+                indexed_passage_count = 0
 
-        if indexed_passage_count == 0:
-            st.warning(str(t(ui_lang, "sidebar_empty")))
-        else:
-            st.success(str(t(ui_lang, "sidebar_ready", n=indexed_passage_count)))
+        if indexed_passage_count > 0:
+            st.caption(str(t(ui_lang, "sidebar_ready", n=indexed_passage_count)))
 
     st.markdown(
         f"""
