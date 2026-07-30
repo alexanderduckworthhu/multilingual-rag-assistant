@@ -86,8 +86,9 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_about": "About",
         "sidebar_body": (
             "Multilingual retrieval-augmented QA over public WHO topic guidance. "
-            "Ask in English, French, German, Italian, Portuguese, Mandarin, or "
-            "Russian against a shared EN/FR index, with citations and a distance gate."
+            "Ask in English, French, German, Italian, Portuguese, Spanish, Arabic, "
+            "Mandarin, or Russian against a shared EN/FR index, with citations and "
+            "a distance gate."
         ),
         "sidebar_ready": "{n} passages indexed",
         "index_preparing": "Preparing the search index…",
@@ -180,8 +181,8 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_body": (
             "QA multilingue augmentée par récupération sur des orientations OMS publiques. "
             "Posez votre question en anglais, français, allemand, italien, portugais, "
-            "chinois mandarin ou russe contre un index EN/FR partagé, avec citations "
-            "et un seuil de distance."
+            "espagnol, arabe, chinois mandarin ou russe contre un index EN/FR partagé, "
+            "avec citations et un seuil de distance."
         ),
         "sidebar_ready": "{n} passages indexés",
         "index_preparing": "Préparation de l’index de recherche…",
@@ -274,8 +275,8 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_body": (
             "Mehrsprachige retrieval-augmentierte QA über öffentliche WHO-Themenleitlinien. "
             "Fragen auf Englisch, Französisch, Deutsch, Italienisch, Portugiesisch, "
-            "Chinesisch (Mandarin) oder Russisch gegen einen gemeinsamen EN/FR-Index, "
-            "mit Zitaten und Distanzschwelle."
+            "Spanisch, Arabisch, Chinesisch (Mandarin) oder Russisch gegen einen "
+            "gemeinsamen EN/FR-Index, mit Zitaten und Distanzschwelle."
         ),
         "sidebar_ready": "{n} Passagen indexiert",
         "index_preparing": "Suchindex wird vorbereitet…",
@@ -367,9 +368,9 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_about": "Informazioni",
         "sidebar_body": (
             "QA multilingue con retrieval aumentato sugli orientamenti OMS pubblici. "
-            "Domande in inglese, francese, tedesco, italiano, portoghese, cinese "
-            "mandarino o russo contro un indice EN/FR condiviso, con citazioni e "
-            "soglia di distanza."
+            "Domande in inglese, francese, tedesco, italiano, portoghese, spagnolo, "
+            "arabo, cinese mandarino o russo contro un indice EN/FR condiviso, con "
+            "citazioni e soglia di distanza."
         ),
         "sidebar_ready": "{n} passaggi indicizzati",
         "index_preparing": "Preparazione dell’indice di ricerca…",
@@ -461,8 +462,9 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_about": "Sobre",
         "sidebar_body": (
             "QA multilíngue com recuperação aumentada sobre orientações públicas da OMS. "
-            "Pergunte em inglês, francês, alemão, italiano, português, chinês mandarim "
-            "ou russo contra um índice EN/FR partilhado, com citações e limiar de distância."
+            "Pergunte em inglês, francês, alemão, italiano, português, espanhol, árabe, "
+            "chinês mandarim ou russo contra um índice EN/FR partilhado, com citações "
+            "e limiar de distância."
         ),
         "sidebar_ready": "{n} trechos indexados",
         "index_preparing": "A preparar o índice de pesquisa…",
@@ -557,8 +559,8 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_body": (
             "QA multilingüe con recuperación aumentada sobre orientaciones "
             "públicas de la OMS. Pregunte en inglés, francés, alemán, italiano, "
-            "portugués, chino mandarín o ruso frente a un índice compartido EN/FR, "
-            "con citas y un umbral de distancia."
+            "portugués, español, árabe, chino mandarín o ruso frente a un índice "
+            "compartido EN/FR, con citas y un umbral de distancia."
         ),
         "sidebar_ready": "{n} pasajes indexados",
         "index_preparing": "Preparando el índice de búsqueda…",
@@ -653,9 +655,9 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_body": (
             "نظام أسئلة وأجوبة متعدد اللغات قائم على الاسترجاع المعزز حول "
             "إرشادات منظمة الصحة العالمية العامة. اطرح أسئلتك بالإنجليزية أو "
-            "الفرنسية أو الألمانية أو الإيطالية أو البرتغالية أو الصينية "
-            "الماندرين أو الروسية مقابل فهرس مشترك بالإنجليزية والفرنسية، "
-            "مع استشهادات وعتبة مسافة."
+            "الفرنسية أو الألمانية أو الإيطالية أو البرتغالية أو الإسبانية أو "
+            "العربية أو الصينية الماندرين أو الروسية مقابل فهرس مشترك "
+            "بالإنجليزية والفرنسية، مع استشهادات وعتبة مسافة."
         ),
         "sidebar_ready": "تمت فهرسة {n} مقطعاً",
         "index_preparing": "جارٍ تحضير فهرس البحث…",
@@ -746,8 +748,8 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_about": "关于",
         "sidebar_body": (
             "面向公开世卫组织主题指南的多语言检索增强问答。"
-            "可用英语、法语、德语、意大利语、葡萄牙语、普通话或俄语提问，"
-            "检索共享的英/法索引，并带有引用与距离门控。"
+            "可用英语、法语、德语、意大利语、葡萄牙语、西班牙语、阿拉伯语、"
+            "普通话或俄语提问，检索共享的英/法索引，并带有引用与距离门控。"
         ),
         "sidebar_ready": "已索引 {n} 个段落",
         "index_preparing": "正在准备检索索引…",
@@ -835,8 +837,8 @@ UI: dict[str, dict[str, Any]] = {
         "sidebar_body": (
             "Многоязычный retrieval-augmented QA по открытым тематическим руководствам ВОЗ. "
             "Вопросы на английском, французском, немецком, итальянском, португальском, "
-            "китайском (путунхуа) или русском к общему индексу EN/FR, с цитатами и "
-            "порогом по расстоянию."
+            "испанском, арабском, китайском (путунхуа) или русском к общему индексу EN/FR, "
+            "с цитатами и порогом по расстоянию."
         ),
         "sidebar_ready": "Проиндексировано фрагментов: {n}",
         "index_preparing": "Подготовка поискового индекса…",
