@@ -87,7 +87,7 @@ def _mark_answer_lang_locked() -> None:
 
 
 def _sync_examples_to_ui_language(ui_lang: str) -> None:
-    """When the UI language changes, refresh examples into the question box."""
+    """When the UI language changes, refresh examples and answer language."""
     previous = st.session_state.get("prev_ui_lang")
     if previous == ui_lang:
         return
@@ -97,8 +97,20 @@ def _sync_examples_to_ui_language(ui_lang: str) -> None:
     # Replace empty box or a leftover example from the previous language.
     if not current_question or current_question in previous_examples:
         st.session_state.question = examples[0] if examples else ""
+    # Answer language always follows the interface language on switch.
+    st.session_state.answer_lang = ui_lang
+    st.session_state.answer_lang_locked = False
     st.session_state.prev_ui_lang = ui_lang
     st.session_state.last_result = None
+
+
+def _active_answer_language(ui_lang: str) -> str:
+    """Return the language used for answers and passage translation."""
+    if st.session_state.get("answer_lang_locked"):
+        locked = st.session_state.get("answer_lang")
+        if locked in UI_LANG_CODES:
+            return str(locked)
+    return ui_lang
 
 
 def _status_css_class(rag_response: RagResponse) -> str:
@@ -133,11 +145,7 @@ def _run_search(ui_lang: str) -> None:
     retrieve_language = (
         None if st.session_state.search_both else st.session_state.search_lang
     )
-    answer_language = (
-        st.session_state.answer_lang
-        if st.session_state.answer_lang_locked
-        else ui_lang
-    )
+    answer_language = _active_answer_language(ui_lang)
     with st.spinner(str(t(ui_lang, "loading"))):
         try:
             st.session_state.last_result = answer_question(
@@ -223,6 +231,9 @@ def main() -> None:
             key="ui_lang",
         )
         _sync_examples_to_ui_language(ui_lang)
+        # Keep answer language aligned with the interface language unless overridden.
+        if not st.session_state.answer_lang_locked:
+            st.session_state.answer_lang = ui_lang
 
         if ui_lang in RTL_LANG_CODES:
             st.markdown(f"<style>{RTL_CSS}</style>", unsafe_allow_html=True)

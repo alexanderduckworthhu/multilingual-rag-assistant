@@ -6,7 +6,6 @@ import logging
 import re
 from dataclasses import dataclass
 
-from src.i18n import CORPUS_LANG_CODES
 from src.retrieve.search import RetrievedChunk
 
 logger = logging.getLogger(__name__)
@@ -18,6 +17,8 @@ _GOOGLE_LANG_CODES: dict[str, str] = {
     "de": "de",
     "it": "it",
     "pt": "pt",
+    "es": "es",
+    "ar": "ar",
     "zh": "zh-CN",
     "ru": "ru",
 }
@@ -116,20 +117,19 @@ def prepare_display_passages(
     """Return passages with `display_text` in `target_language` when needed."""
     prepared: list[DisplayPassage] = []
     for chunk in chunks:
-        needs_translation = chunk.language != target_language
-        # Same-language corpus hit, no translation.
+        needs_translation = bool(target_language) and chunk.language != target_language
         if not needs_translation:
             display_text = chunk.text
-            was_translated = False
-        elif (
-            target_language in CORPUS_LANG_CODES
-            and chunk.language == target_language
-        ):
-            display_text = chunk.text
+            display_title = chunk.title
             was_translated = False
         else:
             display_text = translate_text(
                 chunk.text,
+                target_language=target_language,
+                source_language=chunk.language or None,
+            )
+            display_title = translate_text(
+                chunk.title,
                 target_language=target_language,
                 source_language=chunk.language or None,
             )
@@ -138,7 +138,7 @@ def prepare_display_passages(
         prepared.append(
             DisplayPassage(
                 chunk_id=chunk.chunk_id,
-                title=chunk.title,
+                title=display_title,
                 source_language=chunk.language,
                 source_url=chunk.source_url,
                 distance=chunk.distance,
