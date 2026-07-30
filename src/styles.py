@@ -265,3 +265,43 @@ div[data-testid="stExpander"] {
   }
 }
 """
+
+# Applied in addition to APP_CSS when the interface language reads right-to-left.
+RTL_CSS = """
+.stApp {
+  direction: rtl;
+}
+
+.stApp .rag-hero,
+.stApp .rag-panel,
+.stApp .rag-empty,
+.stApp .rag-answer,
+.stApp .rag-subtitle,
+.stApp .rag-mode,
+.stApp .rag-kicker,
+.stApp .rag-title,
+.stApp .rag-section-label,
+.stApp [data-testid="stMarkdownContainer"],
+.stApp [data-testid="stCaptionContainer"],
+.stApp label {
+  text-align: right;
+}
+
+.stApp textarea,
+.stApp input {
+  text-align: right;
+}
+
+.stApp .rag-status {
+  flex-direction: row-reverse;
+}
+
+.stApp div[data-testid="stExpander"] summary {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.stApp div[data-testid="stAlert"] {
+  text-align: right;
+}
+"""

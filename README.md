@@ -58,7 +58,7 @@ Reproduce: rebuild the index, then re-run eval (commands below). Report file: `d
 |---|---|
 | **Source** | Educational WHO-topic excerpts in `data/sample/` (EN/FR), plus optional HTML extracts via `scripts/download_corpus.py` from public WHO health-topic pages |
 | **License / use** | Public web content for a **portfolio demo only**, not redistributed as official WHO publications; not for clinical or operational decisions |
-| **Languages** | Indexed corpus: English + French. UI / questions / answers: EN, FR, DE, IT, PT, ZH (Mandarin), RU via multilingual-e5 + i18n |
+| **Languages** | Indexed corpus: English + French. UI / questions / answers: EN, FR, DE, IT, PT, ES, AR, ZH (Mandarin), RU via multilingual-e5 + i18n |
 | **Provenance** | Each passage keeps `doc_id`, `title`, `source_url`, `chunk_id` for citation and audit |
 | **Production gap** | Replace samples with WHO IRIS / licensed corpora, add access logging, retention policy, and human review for high-stakes answers |
 
@@ -110,7 +110,7 @@ Tests: `pytest -q`
 ```
 app.py                 Streamlit ask → answer → sources UI
 src/config.py          Architectural constants + rationale
-src/i18n.py            All EN/FR user-facing strings
+src/i18n.py            All user-facing UI strings (9 languages)
 src/styles.py          CSS design tokens + motion
 src/ingest/            load, chunk, embed
 src/retrieve/          Chroma store + search

@@ -24,6 +24,7 @@ from src.config import (  # noqa: E402
 from src.generate.answer import RagResponse, answer_question  # noqa: E402
 from src.i18n import (  # noqa: E402
     CORPUS_LANG_CODES,
+    RTL_LANG_CODES,
     UI_LANG_CODES,
     example_questions,
     language_label,
@@ -33,7 +34,7 @@ from src.i18n import (  # noqa: E402
 )
 from src.retrieve.ensure_index import ensure_index  # noqa: E402
 from src.retrieve.store import collection_count  # noqa: E402
-from src.styles import APP_CSS  # noqa: E402
+from src.styles import APP_CSS, RTL_CSS  # noqa: E402
 
 logger = logging.getLogger(__name__)
 
@@ -222,6 +223,9 @@ def main() -> None:
             key="ui_lang",
         )
         _sync_examples_to_ui_language(ui_lang)
+
+        if ui_lang in RTL_LANG_CODES:
+            st.markdown(f"<style>{RTL_CSS}</style>", unsafe_allow_html=True)
 
         st.markdown("---")
         st.subheader(str(t(ui_lang, "sidebar_about")))

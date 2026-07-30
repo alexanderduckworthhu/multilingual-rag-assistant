@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 # Interface + answer languages (queries can be any of these against the EN/FR index).
-UI_LANG_CODES: tuple[str, ...] = ("en", "fr", "de", "it", "pt", "zh", "ru")
+UI_LANG_CODES: tuple[str, ...] = ("en", "fr", "de", "it", "pt", "es", "ar", "zh", "ru")
 
 # Indexed document languages only (sample corpus).
 CORPUS_LANG_CODES: tuple[str, ...] = ("en", "fr")
@@ -16,6 +16,8 @@ LANGUAGE_LABELS: dict[str, str] = {
     "de": "Deutsch",
     "it": "Italiano",
     "pt": "Português",
+    "es": "Español",
+    "ar": "العربية",
     "zh": "中文",
     "ru": "Русский",
 }
@@ -26,9 +28,14 @@ LLM_LANGUAGE_NAMES: dict[str, str] = {
     "de": "German",
     "it": "Italian",
     "pt": "Portuguese",
+    "es": "Spanish",
+    "ar": "Arabic",
     "zh": "Simplified Chinese (Mandarin)",
     "ru": "Russian",
 }
+
+# Interface languages that read right-to-left.
+RTL_LANG_CODES: tuple[str, ...] = ("ar",)
 
 UI: dict[str, dict[str, Any]] = {
     "en": {
@@ -494,6 +501,202 @@ UI: dict[str, dict[str, Any]] = {
         ),
         "translated_from": "Traduzido de {source}",
         "show_original": "Mostrar texto original",
+
+    },
+    "es": {
+        "page_title": "QA orientaciones OMS",
+        "title": "QA sobre orientaciones de la OMS",
+        "subtitle": (
+            "Consulte las orientaciones públicas de la OMS en su idioma. "
+            "El índice contiene pasajes en inglés y francés; las respuestas "
+            "incluyen citas, o un rechazo claro cuando la recuperación es "
+            "demasiado débil."
+        ),
+        "portfolio_note": "Demo de portafolio · no es una herramienta oficial de la OMS",
+        "question": "Su pregunta",
+        "question_placeholder": "Ejemplo: ¿Qué es la cobertura sanitaria universal?",
+        "ask": "Buscar en las orientaciones",
+        "clear_question": "Borrar pregunta",
+        "try_these": "Comience con un ejemplo",
+        "answer_lang": "Idioma de la respuesta",
+        "search_both": "Buscar en documentos en inglés y francés a la vez",
+        "search_both_help": (
+            "El corpus está en inglés y francés. Las incrustaciones "
+            "multilingües igualmente pueden coincidir con preguntas en "
+            "otros idiomas. Desactive esta opción para restringir la "
+            "búsqueda a un solo idioma de documento."
+        ),
+        "search_lang": "Recuperar de documentos en",
+        "advanced": "Opciones de búsqueda",
+        "answer": "Respuesta",
+        "sources": "Pasajes de apoyo",
+        "sources_hint": "Abra un pasaje para verificar la redacción con el texto fuente.",
+        "no_sources": "No se recuperó ningún pasaje para esta pregunta.",
+        "empty_question": "Escriba una pregunta antes de buscar (al menos algunas palabras).",
+        "question_too_short": "Agregue un poco más de detalle para que la búsqueda tenga algo que comparar.",
+        "loading": "Buscando en las orientaciones indexadas de la OMS…",
+        "first_visit": (
+            "Escriba una pregunta arriba, o elija un ejemplo. "
+            "Verá una respuesta citada cuando la recuperación sea "
+            "suficientemente sólida, y un rechazo cuando no lo sea."
+        ),
+        "retry": "Buscar de nuevo",
+        "status_grounded": "Fundamentada, respaldada por pasajes indexados",
+        "status_refused": "Rechazada, la coincidencia de búsqueda es demasiado débil para responder con seguridad",
+        "status_empty": "Índice vacío, construya el índice antes de buscar",
+        "mode_llm": "Redactada a partir de los pasajes recuperados (LLM)",
+        "mode_extractive": "Mostrando los pasajes más relevantes (no hay clave de API configurada)",
+        "mode_refused": "Generación omitida, vea la explicación a continuación",
+        "mode_empty_index": "Aún no hay documentos indexados",
+        "mode_llm_error": "Modelo no disponible, mostrando pasajes coincidentes en su lugar",
+        "sidebar_lang": "Idioma de la interfaz",
+        "sidebar_about": "Acerca de",
+        "sidebar_body": (
+            "QA multilingüe con recuperación aumentada sobre orientaciones "
+            "públicas de la OMS por tema. Pregunte en inglés, francés, "
+            "alemán, italiano, portugués, español, árabe, chino mandarín o "
+            "ruso frente a un índice compartido EN/FR, con citas y un "
+            "umbral de distancia."
+        ),
+        "sidebar_ready": "{n} pasajes indexados",
+        "index_preparing": "Preparando el índice de búsqueda…",
+        "sidebar_empty": (
+            "El índice está vacío. Desde la raíz del proyecto, ejecute:\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "relevancia",
+        "lang_label": "Idioma del pasaje",
+        "open_source": "Abrir página original",
+        "passage_id": "ID del pasaje",
+        "examples": [
+            "¿Qué es la salud mental según la OMS?",
+            "¿Cómo deben los países fortalecer la atención primaria de salud?",
+            "¿Qué es la cobertura sanitaria universal?",
+        ],
+        "msg_empty_index": (
+            "El índice de búsqueda todavía se está preparando. Espere un momento y vuelva a intentarlo."
+        ),
+        "msg_refusal": (
+            "Ningún pasaje coincidió lo suficiente con esta pregunta como "
+            "para responder con seguridad. Pregunte sobre salud mental, "
+            "cobertura sanitaria universal o atención primaria de salud, o "
+            "busque en los documentos en inglés y francés a la vez."
+        ),
+        "msg_extractive_header": (
+            "No hay clave de API de LLM configurada. Pasajes más relevantes:"
+        ),
+        "msg_extractive_same_lang": (
+            "Se muestran los pasajes en su idioma de respuesta cuando están disponibles."
+        ),
+        "msg_extractive_other_lang": (
+            "Ningún pasaje indexado en su idioma de respuesta coincidió lo "
+            "suficiente. Se muestran los mejores pasajes fuente en "
+            "inglés/francés (redacción original). Configure OPENAI_API_KEY "
+            "para obtener una respuesta redactada en su idioma."
+        ),
+        "msg_passages_translated": (
+            "Los pasajes fuente se tradujeron a su idioma de respuesta. "
+            "Abra «Mostrar original» debajo de cada fuente para verificar la redacción indexada."
+        ),
+        "translated_from": "Traducido de {source}",
+        "show_original": "Mostrar redacción original",
+
+    },
+    "ar": {
+        "page_title": "أسئلة وأجوبة: إرشادات منظمة الصحة العالمية",
+        "title": "الأسئلة والأجوبة حول إرشادات منظمة الصحة العالمية",
+        "subtitle": (
+            "اطرح أسئلة حول الإرشادات العامة الصادرة عن منظمة الصحة العالمية "
+            "بلغتك. يضم الفهرس مقاطع بالإنجليزية والفرنسية، وتتضمن الإجابات "
+            "استشهادات، أو رفضاً واضحاً عندما يكون الاسترجاع ضعيفاً جداً."
+        ),
+        "portfolio_note": "عرض توضيحي لمحفظة الأعمال، وليس أداة رسمية لمنظمة الصحة العالمية",
+        "question": "سؤالك",
+        "question_placeholder": "مثال: ما هي التغطية الصحية الشاملة؟",
+        "ask": "البحث في الإرشادات",
+        "clear_question": "مسح السؤال",
+        "try_these": "ابدأ بمثال",
+        "answer_lang": "لغة الإجابة",
+        "search_both": "البحث في الوثائق الإنجليزية والفرنسية معاً",
+        "search_both_help": (
+            "تتكون المجموعة النصية من وثائق بالإنجليزية والفرنسية. لا تزال "
+            "التضمينات متعددة اللغات قادرة على مطابقة الأسئلة بلغات أخرى. "
+            "عطّل هذا الخيار لتقييد الاسترجاع بلغة وثيقة واحدة."
+        ),
+        "search_lang": "الاسترجاع من الوثائق باللغة",
+        "advanced": "خيارات البحث",
+        "answer": "الإجابة",
+        "sources": "المقاطع الداعمة",
+        "sources_hint": "افتح أحد المقاطع للتحقق من الصياغة مقارنة بالنص المصدر.",
+        "no_sources": "لم يتم استرجاع أي مقطع لهذا السؤال.",
+        "empty_question": "أدخل سؤالاً قبل البحث (بضع كلمات على الأقل).",
+        "question_too_short": "أضف مزيداً من التفاصيل حتى يكون لدى عملية الاسترجاع ما تطابقه.",
+        "loading": "جارٍ البحث في إرشادات منظمة الصحة العالمية المفهرسة…",
+        "first_visit": (
+            "اكتب سؤالاً أعلاه، أو اختر أحد الأمثلة. ستظهر لك إجابة مدعومة "
+            "بمصادر عندما يكون الاسترجاع قوياً بما يكفي، ورفضاً عندما لا "
+            "يكون كذلك."
+        ),
+        "retry": "البحث مرة أخرى",
+        "status_grounded": "مدعومة بمقاطع مفهرسة",
+        "status_refused": "مرفوضة، تطابق الاسترجاع ضعيف جداً للإجابة بأمان",
+        "status_empty": "الفهرس فارغ، قم ببناء الفهرس قبل البحث",
+        "mode_llm": "تمت صياغتها من المقاطع المسترجعة (نموذج لغوي)",
+        "mode_extractive": "عرض أفضل المقاطع المطابقة (لم يتم تكوين مفتاح واجهة برمجة التطبيقات)",
+        "mode_refused": "تم تخطي التوليد، انظر التوضيح أدناه",
+        "mode_empty_index": "لم تتم فهرسة أي وثائق بعد",
+        "mode_llm_error": "النموذج غير متاح، يتم عرض المقاطع المطابقة بدلاً من ذلك",
+        "sidebar_lang": "لغة الواجهة",
+        "sidebar_about": "حول",
+        "sidebar_body": (
+            "نظام أسئلة وأجوبة متعدد اللغات قائم على الاسترجاع المعزز حول "
+            "إرشادات منظمة الصحة العالمية العامة حسب الموضوع. اطرح أسئلتك "
+            "بالإنجليزية أو الفرنسية أو الألمانية أو الإيطالية أو "
+            "البرتغالية أو الإسبانية أو العربية أو الصينية الماندرين أو "
+            "الروسية مقابل فهرس مشترك بالإنجليزية والفرنسية، مع استشهادات "
+            "وحد أدنى للمسافة."
+        ),
+        "sidebar_ready": "تمت فهرسة {n} مقطعاً",
+        "index_preparing": "جارٍ تحضير فهرس البحث…",
+        "sidebar_empty": (
+            "الفهرس فارغ. من جذر المشروع، نفّذ الأمر:\n"
+            "`python -m scripts.build_index`"
+        ),
+        "distance_label": "الصلة",
+        "lang_label": "لغة المقطع",
+        "open_source": "فتح الصفحة الأصلية",
+        "passage_id": "معرّف المقطع",
+        "examples": [
+            "ما هي الصحة النفسية وفقاً لمنظمة الصحة العالمية؟",
+            "كيف ينبغي للبلدان تعزيز الرعاية الصحية الأولية؟",
+            "ما هي التغطية الصحية الشاملة؟",
+        ],
+        "msg_empty_index": (
+            "لا يزال فهرس البحث قيد التحضير. انتظر لحظة ثم أعد المحاولة."
+        ),
+        "msg_refusal": (
+            "لم يتطابق أي مقطع مع هذا السؤال بدرجة كافية للإجابة بأمان. "
+            "اطرح سؤالاً عن الصحة النفسية، أو التغطية الصحية الشاملة، أو "
+            "الرعاية الصحية الأولية، أو ابحث في الوثائق الإنجليزية "
+            "والفرنسية معاً."
+        ),
+        "msg_extractive_header": (
+            "لم يتم تكوين مفتاح واجهة برمجة تطبيقات للنموذج اللغوي. أفضل المقاطع المطابقة:"
+        ),
+        "msg_extractive_same_lang": (
+            "تُعرض المقاطع بلغة الإجابة عند توفرها."
+        ),
+        "msg_extractive_other_lang": (
+            "لم يتطابق أي مقطع مفهرس بلغة الإجابة بدرجة كافية. فيما يلي "
+            "أفضل المقاطع المصدرية بالإنجليزية والفرنسية (بصياغتها "
+            "الأصلية). عيّن OPENAI_API_KEY للحصول على إجابة مصاغة بلغتك."
+        ),
+        "msg_passages_translated": (
+            "تُرجمت المقاطع المصدرية إلى لغة الإجابة. افتح «إظهار النص "
+            "الأصلي» أسفل كل مصدر للتحقق من الصياغة المفهرسة."
+        ),
+        "translated_from": "مُترجم من {source}",
+        "show_original": "إظهار النص الأصلي",
 
     },
     "zh": {
