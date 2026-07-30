@@ -1,7 +1,7 @@
 """Download a small set of public WHO topic pages as text (best-effort).
 
 WHY WHO topic pages (not bulk UNGA PDFs) for v1:
-  - Geneva-relevant, bilingual, short enough for a laptop demo
+  - Bilingual, public-health relevant, short enough for a laptop demo
   - Clear provenance URLs for your README / interview story
   - Avoids brittle scraping of huge resolution archives
 

@@ -32,7 +32,7 @@ data/sample + data/raw
 
 | Choice | Decision | Alternative considered | Why this one |
 |---|---|---|---|
-| Corpus | WHO guidance EN+FR | UNGA resolutions | Geneva-relevant, bilingual, denser for laptop eval |
+| Corpus | WHO guidance EN+FR | UNGA resolutions | Bilingual, public-health relevant, denser for laptop eval |
 | Chunking | Recursive, 800 / 120 | Semantic/LLM chunking | Deterministic and debuggable |
 | Embeddings | multilingual-e5-small | OpenAI embeddings | Shared EN/FR space, offline, free |
 | Vector store | Chroma | FAISS, Pinecone | Local metadata filters, no cloud |

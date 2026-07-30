@@ -4,7 +4,7 @@ MULTILINGUAL RAG (WHO GUIDANCE QA). REVERSE ENGINEERING GUIDE
 Purpose: Teach yourself how this portfolio project works by walking backward
 from the Streamlit answer to the raw text files. Read with the code open.
 
-Audience: You (career-changer / INFJ who needs the WHY). Not for hiring managers
+Audience: You (the builder who needs the WHY). Not for hiring managers
 ,  they get the README and docs/interview_talking_points.md.
 
 Sibling project note: where-needs-overlap is a separate humanitarian dashboard.
@@ -20,7 +20,7 @@ Question the whole app answers:
    question with citations, and refuse when the corpus does not support it?"
 
 If a feature does not improve grounding, multilingual access, or measurable
-retrieval, it does not belong. That filter stops INFJ overbuilding.
+retrieval, it does not belong. That filter stops scope creep.
 
 
 --------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ src/config.py
 src/ingest/load_docs.py
   - Corpus loader: sample folder always works; raw folder optional
   - Sidecar *.meta.json holds doc_id, language, title, source_url
-  - WHY WHO samples: bilingual, Geneva-relevant, short enough to debug
+  - WHY WHO samples: bilingual, public-health relevant, short enough to debug
 
 src/ingest/chunk.py
   - DocumentRecord → ChunkRecord list
@@ -166,7 +166,7 @@ src/i18n.py
 
 4.5 Corpus choice
   WHAT: WHO guidance-style EN/FR documents (mental health, UHC, PHC)
-  WHY: Geneva HQ signal for WHO/UN/consulting interviews; natural bilingual
+  WHY: WHO HQ relevance; natural bilingual
        pairs; shorter than UNGA resolutions → better first eval loop.
   HOW TO EXPAND:
        1) python -m scripts.download_corpus
@@ -189,7 +189,7 @@ What you can do at query time:
   - language="fr"  → hard filter for French-only passages
   - answer_language independent → reply in FR even if sources were EN
 
-Why this matters for Geneva roles:
+Why this matters for bilingual workflows:
   Staff constantly switch languages. Showing cross-lingual retrieval is a
   feature you can demo live ("I asked in French, it cited the English UHC note").
 

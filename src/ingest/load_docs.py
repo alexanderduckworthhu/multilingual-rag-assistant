@@ -1,6 +1,6 @@
 """Load WHO guidance documents from sample/ and optional raw/ folders.
 
-WHO topic guidance is the v1 corpus (Geneva-relevant, bilingual, dense).
+WHO topic guidance is the v1 corpus (bilingual, public-health relevant, dense).
 UNGA resolutions are a deliberate v2 candidate once retrieval metrics are stable.
 """
 

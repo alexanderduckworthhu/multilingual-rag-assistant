@@ -1,6 +1,6 @@
 # WHO Guidance QA
 
-A multilingual document question-answering assistant over public WHO topic guidance (English/French index; UI and answers in EN, FR, DE, IT, PT, ZH, RU), built for Geneva-facing analysts who need cited answers they can verify.
+A multilingual document question-answering assistant over public WHO topic guidance (English/French index; UI and answers in EN, FR, DE, IT, PT, ZH, RU), built for analysts in bilingual international workflows who need cited answers they can verify.
 
 | | |
 |---|---|
@@ -12,20 +12,20 @@ A multilingual document question-answering assistant over public WHO topic guida
 
 ## Why it exists
 
-Policy and health analysts often need a short answer grounded in WHO wording, not a fluent paraphrase from a general-purpose chat model. Generic assistants invent citations; monolingual search fails in Geneva’s bilingual workflow. This project indexes English and French guidance in one vector space, answers with passage IDs, and refuses when retrieval is weak.
+Policy and health analysts often need a short answer grounded in WHO wording, not a fluent paraphrase from a general-purpose chat model. Generic assistants invent citations; monolingual search fails in bilingual international workflows. This project indexes English and French guidance in one vector space, answers with passage IDs, and refuses when retrieval is weak.
 
 ---
 
 ## Technical decisions
 
 - **Corpus. WHO topic guidance (mental health, UHC, primary health care), EN+FR**  
-  Considered UNGA resolutions. Chose WHO for denser prose, natural bilingual pairs, and Geneva HQ relevance. UNGA remains a v2 corpus once metrics are stable.
+  Considered UNGA resolutions. Chose WHO for denser prose, natural bilingual pairs, and WHO HQ relevance. UNGA remains a v2 corpus once metrics are stable.
 
 - **Chunking, recursive character split, 800 chars / 120 overlap**  
   Considered semantic/LLM chunking. Chose recursive split for deterministic, debuggable boundaries; overlap reduces answers split across chunks.
 
 - **Embeddings, `intfloat/multilingual-e5-small`**  
-  Considered OpenAI `text-embedding-3-small`. Chose E5 for a shared EN/FR space, offline demos, and explicit `query:` / `passage:` prefixes that are interview-defensible.
+  Considered OpenAI `text-embedding-3-small`. Chose E5 for a shared EN/FR space, offline demos, and explicit `query:` / `passage:` prefixes that are easy to defend.
 
 - **Vector store. Chroma (cosine, local persist)**  
   Considered FAISS and Pinecone. Chose Chroma for metadata filters, zero Docker/cloud cost, and inspectable on-disk indexes.
